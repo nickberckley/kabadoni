@@ -133,6 +133,11 @@ body {
 
     /* Icons */
     --viewer-svg-collapse:           url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FFF' opacity='0.6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='m7 15 5 5 5-5'/%3E%3Cpath d='m7 9 5-5 5 5'/%3E%3C/svg%3E");
+
+    /* Callouts */
+    --viewer-callout-multiplier-s:   2.4;
+    --viewer-callout-multiplier-l:   2.5;
+    --viewer-callout-box-shadow:     var(var(--dark_bg_1));
 }
 
 
@@ -191,6 +196,11 @@ body {
 
     /* Icons */
     --viewer-svg-collapse:           url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'   stroke='%23000' opacity='0.9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='m7 15 5 5 5-5'/%3E%3Cpath d='m7 9 5-5 5 5'/%3E%3C/svg%3E");
+
+    /* Callouts */
+    --viewer-callout-multiplier-s:   1;
+    --viewer-callout-multiplier-l:   1;
+    --viewer-callout-box-shadow:     var(--light_bg_3);
 }
 
 
@@ -434,6 +444,9 @@ input.kanban-plugin__filter-input {
 .mod-header .metadata-property-value:focus-within {
     background-color: var(--viewer-primary);
 }
+.cm-editor .edit-block-button:hover {
+    background-color: var(--viewer-primary) !important;
+}
 
 
 
@@ -502,6 +515,95 @@ input[type=checkbox]:checked {
 /* Tags */
 .cm-hashtag {
     color: var(--white_text_3) !important;
+}
+
+/* Callouts */
+.cm-callout {
+    box-shadow: -2px 3px 1px var(--viewer-callout-box-shadow);
+    border-radius: 5px;
+}
+.callout {
+    --callout-color: #d2c6bc;
+    padding: 0;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: hsl(from var(--callout-color) h calc(s / var(--viewer-callout-multiplier-l)) calc(l / var(--viewer-callout-multiplier-s)));
+}
+.callout-title {
+    background-color: hsl(from var(--callout-color) h calc(s / var(--viewer-callout-multiplier-s)) calc(l / var(--viewer-callout-multiplier-l)));
+    color: var(--viewer-text-muted);
+    padding: 10px 20px 8px;
+    font-weight: bold;
+    box-shadow: inset 0px -2px 0px 0px rgba(0, 0, 0, 0.05), inset 0px 1px 1px 0px rgba(255, 255, 255, 0.2);
+}
+.callout-content {
+    padding: 0px 15px 0px;
+    background-color: hsl(from var(--callout-color) h calc(s / var(--viewer-callout-multiplier-s)) calc(l / (0.95 * var(--viewer-callout-multiplier-s))));
+}
+.callout-icon {
+    color: hsl(from var(--callout-color) h s calc(l / 1.6));
+    margin-right: 8px;
+}
+.markdown-source-view.mod-cm6 .cm-embed-block:not(.cm-table-widget):hover {
+    border-radius: 5px;
+    --embed-block-shadow-hover: 0 0 0 1px var(--viewer-text-faint), inset 0 0 0 1px var(--viewer-text-faint);
+}
+.callout.is-collapsible .callout-title:hover {
+    cursor: pointer;
+}
+
+.callout[data-callout=note] {
+    --callout-color: #b6cacf;
+}
+.callout[data-callout=abstract],
+.callout[data-callout=summary],
+.callout[data-callout=tldr] {
+    --callout-color: #f4e0b4;
+}
+.callout[data-callout=info] {
+    --callout-color: #d8c1c5;
+}
+.callout[data-callout=todo] {
+    --callout-color: #bbdef5;
+}
+.callout[data-callout=tip],
+.callout[data-callout=hint],
+.callout[data-callout=important] {
+    --callout-color: #bee9df;
+}
+.callout[data-callout=success],
+.callout[data-callout=check],
+.callout[data-callout=done] {
+    --callout-color: #bedbaf;
+}
+.callout[data-callout=question],
+.callout[data-callout=help],
+.callout[data-callout=faq] {
+    --callout-color: #d9c4ce;
+}
+.callout[data-callout=warning],
+.callout[data-callout=caution],
+.callout[data-callout=attention] {
+    --callout-color: #fbdaad;
+}
+.callout[data-callout=fail],
+.callout[data-callout=failure],
+.callout[data-callout=missing] {
+    --callout-color: #f1bdbf;
+}
+.callout[data-callout=danger],
+.callout[data-callout=error] {
+    --callout-color: #f1bdbf;
+}
+.callout[data-callout=bug] {
+    --callout-color: #eecfbd;
+}
+.callout[data-callout=example] {
+    --callout-color: #eed3cd;
+}
+.callout[data-callout=quote],
+.callout[data-callout=cite] {
+    --callout-color: #dbcbba;
 }
 
 
