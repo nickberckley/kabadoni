@@ -130,6 +130,9 @@ body {
     --graph-node:                    var(--white_text_2);
     --graph-node-tag:                var(--blue_1);
     --graph-node-attachment:         var(--blue_1);
+
+    /* Icons */
+    --viewer-svg-collapse:           url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FFF' opacity='0.6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='m7 15 5 5 5-5'/%3E%3Cpath d='m7 9 5-5 5 5'/%3E%3C/svg%3E");
 }
 
 
@@ -185,6 +188,9 @@ body {
     --graph-node:                    var(--black_text_2);
     --graph-node-tag:                var(--blue_1);
     --graph-node-attachment:         var(--blue_1);
+
+    /* Icons */
+    --viewer-svg-collapse:           url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'   stroke='%23000' opacity='0.9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='m7 15 5 5 5-5'/%3E%3Cpath d='m7 9 5-5 5 5'/%3E%3C/svg%3E");
 }
 
 
@@ -199,6 +205,9 @@ body {
 .nav-file-title.is-active {
     color: var(--white_text_1);
     background-color: var(--color-accent-dim);
+}
+.is-live-preview .list-bullet:after {
+    background-color: var(--viewer-text-faint);
 }
 
 /* Workspace */
@@ -226,6 +235,9 @@ body.is-focused .workspace-tabs.mod-top {
 .workspace .mod-root .workspace-tab-header-inner::after {
     background-color: var(--dark_bg_5);
 }
+.workspace-tab-header-inner-icon svg {
+    stroke: var(--white_text_2);
+}
 .community-item {
     background-color: var(--dark_bg_1);
 }
@@ -235,8 +247,12 @@ body.is-focused .workspace-tabs.mod-top {
 }
 .suggestion {
     background-color: var(--background-primary);
-    color: var(--white_text_1);
+    color: var(--color-accent);
     --text-muted: var(--white_text_3);
+}
+.suggestion-item.is-selected {
+    background-color: var(--dark_bg_6);
+    color: var(--white_text_2)
 }
 
 
@@ -263,6 +279,13 @@ select option {
 .checkbox-container {
     background-color: var(--background-modifier-border);
 }
+.text-icon-button:hover {
+    background-color: var(--color-accent);
+    color: var(--white_text_2);
+}
+.metadata-property-value:focus-within {
+    background-color: var(--dark_bg_3);
+}
 
 /* Active line */
 .cm-active{
@@ -278,6 +301,9 @@ select option {
 .cm-active :is(.cm-formatting-list) {
     color: var(--text-muted);
 }
+.is-live-preview .cm-active .list-bullet:after {
+    background-color: var(--viewer-text-muted);
+}
 
 /* Caret cursor */
 .cm-line {
@@ -287,14 +313,15 @@ select option {
 
 
 /* EDITOR (Theme Overrides) ___________________________________________________________________________ */
-.mod-confirmation,
-.prompt,
-.community-modal-details,
-.vertical-tab-content-container,
-.view-header,
 .cm-editor,
 .markdown-preview-view,
 .kanban-plugin__item-wrapper,
+.mod-confirmation, /* Pop-up windows (example: font selector in preferences) */
+.prompt, /* Pop-up search windows (example: Ctrl-P, Ctrl-O) */
+.community-modal-details, /* Plugin & theme pages */
+.vertical-tab-content-container, /* Preferences */
+.view-header, /* Reading window's header (top row buttons) */
+.mod-lg, /* Ribbon customization pop-up */
 .popover.hover-popover {
     color: var(--viewer-text-normal);
     --icon-color: var(--readview-icons-color);
@@ -320,6 +347,11 @@ select option {
 .cm-editor .tree-item-self.search-result-file-title .tree-item-inner {
     color: var(--viewer-text-muted);
 }
+.markdown-preview-view .tree-item-self.is-clickable:hover,
+.cm-editor .tree-item-self.is-clickable:hover {
+    background-color: var(--viewer-secondary) !important;
+}
+
 .markdown-preview-view .search-result-file-matches,
 .cm-editor .search-result-file-matches {
     color: var(--viewer-text-muted);
@@ -329,6 +361,7 @@ select option {
 /* Pop-up search windows (Ctrl-P, Ctrl-O) */
 .prompt-results .suggestion-item.is-selected {
     background-color: var(--viewer-primary);
+    color: var(--viewer-text-normal)
 }
 input.prompt-input:focus-visible {
     border-bottom: none;
@@ -373,10 +406,13 @@ button.kanban-plugin__new-item-button {
 .kanban-plugin__lane-action-cancel {
     color: var(--viewer-text-normal) !important;
 }
+input.kanban-plugin__filter-input {
+    color: var(--viewer-text-muted);
+}
 
 /* Buttons & widgets inside themed areas */
 .vertical-tabs-container .dropdown {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23000' opacity='0.9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='m7 15 5 5 5-5'/%3E%3Cpath d='m7 9 5-5 5 5'/%3E%3C/svg%3E");
+    background-image: var(--viewer-svg-collapse);
 }
 .vertical-tabs-container select option {
     background-color: var(--viewer-flat) !important;
@@ -391,6 +427,12 @@ button.kanban-plugin__new-item-button {
 }
 .vertical-tabs-container .search-input-container:before {
     background-color: var(--viewer-text-muted);
+}
+.mod-header .metadata-property-key input {
+    color: var(--viewer-text-muted);
+}
+.mod-header .metadata-property-value:focus-within {
+    background-color: var(--viewer-primary);
 }
 
 
@@ -416,15 +458,15 @@ button.kanban-plugin__new-item-button {
     position: absolute;
     top: 10%;
     right: 20%;
+    font-size: var(--font-ui-small);
 }
 
-/* Headings */
+/* Headings (H1) */
 .HyperMD-header-1 {
     background-color: var(--heading-background);
     border: 1px solid var(--heading-border);
     border-radius: 5px;
     border-top: 5px;
-    height: 55px;
 }
 
 /* Checkbox */
@@ -455,6 +497,11 @@ input[type=checkbox]:checked {
     background-color: var(--yellow-dim);
     color: var(--black_text_1);
     font-weight: 600;
+}
+
+/* Tags */
+.cm-hashtag {
+    color: var(--white_text_3) !important;
 }
 
 
