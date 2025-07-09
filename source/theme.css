@@ -72,13 +72,12 @@ body {
 
     /* Checkbox */
     --checkbox-color:                var(--dark_bg_6);
-    --checkbox-color-hover:          var(--color-accent);
-    --checkbox-border-color:         var(--color-accent);
-    --checkbox-border-color-hover:   var(--white_text_2);
 }
 
 
 .theme-dark {
+    --viewer-color-scheme:           dark;
+
     /* Reading View */
     --background-primary:            var(--dark_bg_1);
     --viewer-primary:                var(--dark_bg_3);
@@ -142,6 +141,8 @@ body {
 
 
 .theme-light {
+    --viewer-color-scheme:           light;
+
     /* Reading View */
     --background-primary:            var(--light_bg_1);
     --viewer-primary:                var(--light_bg_3);
@@ -265,7 +266,6 @@ body.is-focused .workspace-tabs.mod-top {
     color: var(--white_text_2)
 }
 
-
 /* Widgets */
 ::-webkit-scrollbar-thumb {
     background-color: var(--dark_bg_3) !important;
@@ -295,6 +295,11 @@ select option {
 }
 .metadata-property-value:focus-within {
     background-color: var(--dark_bg_3);
+}
+input[type='date'],
+input[type='datetime-local'],
+.metadata-property-value {
+    color-scheme: dark !important;
 }
 
 /* Active line */
@@ -368,6 +373,16 @@ select option {
     background-color: var(--viewer-secondary);
 }
 
+.markdown-preview-view .clickable-icon.is-active:hover,
+.cm-editor .clickable-icon.is-active:hover {
+    background-color: var(--text-selection);
+}
+
+.markdown-preview-view .search-result-hover-button,
+.cm-editor .search-result-hover-button {
+    color: var(--viewer-text-muted);
+}
+
 /* Pop-up search windows (Ctrl-P, Ctrl-O) */
 .prompt-results .suggestion-item.is-selected {
     background-color: var(--viewer-primary);
@@ -438,14 +453,39 @@ input.kanban-plugin__filter-input {
 .vertical-tabs-container .search-input-container:before {
     background-color: var(--viewer-text-muted);
 }
-.mod-header .metadata-property-key input {
-    color: var(--viewer-text-muted);
-}
-.mod-header .metadata-property-value:focus-within {
-    background-color: var(--viewer-primary);
-}
 .cm-editor .edit-block-button:hover {
     background-color: var(--viewer-primary) !important;
+}
+
+/* File Properties */
+.mod-header .metadata-property-icon:hover svg,
+.cm-editor .metadata-property-icon:hover svg {
+    color: var(--viewer-bold-color) !important;
+}
+
+.mod-header .metadata-property-key input,
+.cm-editor .metadata-property-key input {
+    color: var(--viewer-text-muted);
+}
+.mod-header .metadata-property-key:focus-within,
+.cm-editor .metadata-property-key:focus-within {
+    background-color: var(--viewer-primary) !important;
+}
+
+.mod-header .metadata-property-value,
+.mod-header .metadata-input-longtext,
+.cm-editor .metadata-property-value,
+.cm-editor .metadata-input-longtext {
+    --pill-color: var(--viewer-text-muted);
+    --metadata-input-text-color: var(--viewer-text-muted);
+}
+.mod-header .metadata-property-value:focus-within,
+.cm-editor .metadata-property-value:focus-within {
+    background-color: var(--viewer-primary);
+}
+.cm-editor input[type='date'],
+.cm-editor input[type='datetime-local'] {
+    color-scheme: var(--viewer-color-scheme) !important;
 }
 
 
@@ -484,10 +524,17 @@ input.kanban-plugin__filter-input {
 
 /* Checkbox */
 input[type=checkbox] {
-    border: 1px solid var(--checkbox-color);
+    border: 1px solid var(--dark_bg_6);
 }
 input[type=checkbox]:checked {
     background-color: var(--color-accent);
+}
+input[type=checkbox]:hover,
+input[type=checkbox]:checked:hover {
+    border: 1px solid var(--viewer-text-normal);
+}
+input[type=checkbox]:checked:hover {
+    background-color: color-mix(in srgb, var(--color-accent) 75%, white);
 }
 
 /* Highlight */
@@ -517,7 +564,9 @@ input[type=checkbox]:checked {
     color: var(--white_text_3) !important;
 }
 
-/* Callouts */
+
+
+/* CALLOUTS ____________________________________________________________________ */
 .cm-callout {
     box-shadow: -2px 3px 1px var(--viewer-callout-box-shadow);
     border-radius: 5px;
@@ -647,7 +696,7 @@ td {
 
 
 /* TASKS ____________________________________________________________________ */
-/* Lined */
+/* Ongoing */
 li.is-checked:where(li[data-task="-"]) input[type=checkbox],
 .markdown-source-view input[type=checkbox]:where([data-task="-"]):checked {
   background-color: var(--yellow);
@@ -655,9 +704,7 @@ li.is-checked:where(li[data-task="-"]) input[type=checkbox],
 }
 li.is-checked:where(li[data-task="-"]) input[type=checkbox]:hover,
 .markdown-source-view input[type=checkbox]:where([data-task="-"]):checked:hover {
-  box-shadow: none;
-  border-color: var(--yellow);
-  pointer-events: none;
+    background-color: color-mix(in srgb, var(--yellow) 75%, white);
 }
 li.is-checked:where(li[data-task="-"]) input[type=checkbox]::after,
 .markdown-source-view input[type=checkbox]:where([data-task="-"]):checked::after {
@@ -679,11 +726,9 @@ li.is-checked:where(li[data-task=X]) input[type=checkbox],
   background-color: var(--red);
   border-width: 1px;
 }
-li.is-checked:where(li[data-task=X]) input[type=checkbox]:hover,
-.markdown-source-view input[type=checkbox]:where([data-task=X]):checked:hover {
-  box-shadow: none;
-  border-color: var(--red);
-  pointer-events: none;
+li.is-checked:where(li[data-task="X"]) input[type=checkbox]:hover,
+.markdown-source-view input[type=checkbox]:where([data-task="X"]):checked:hover {
+    background-color: color-mix(in srgb, var(--red) 75%, white);
 }
 li.is-checked:where(li[data-task=X]) input[type=checkbox]::after,
 .markdown-source-view input[type=checkbox]:where([data-task=X]):checked::after {
@@ -705,9 +750,7 @@ li.is-checked:where(li[data-task="|"]) input[type=checkbox],
 }
 li.is-checked:where(li[data-task="|"]) input[type=checkbox]:hover,
 .markdown-source-view input[type=checkbox]:where([data-task="|"]):checked:hover {
-  box-shadow: none;
-  border-color: var(--dark_bg_6);
-  pointer-events: none;
+    background-color: color-mix(in srgb, var(--dark_bg_6) 75%, white);
 }
 li.is-checked:where(li[data-task="|"]) input[type=checkbox]::after,
 .markdown-source-view input[type=checkbox]:where([data-task="|"]):checked::after {
@@ -721,7 +764,7 @@ input[type=checkbox][data-task="|"]::after {
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20viewBox%3D%22-1%200%208%208%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20fill%3D%22%23000000%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Ctitle%3Epause%20%5B%231006%5D%3C%2Ftitle%3E%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%3Cdefs%3E%3C%2Fdefs%3E%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20id%3D%22Dribbble-Light-Preview%22%20transform%3D%22translate(-227.000000%2C%20-3765.000000)%22%20fill%3D%22%23000000%22%3E%3Cg%20id%3D%22icons%22%20transform%3D%22translate(56.000000%2C%20160.000000)%22%3E%3Cpath%20d%3D%22M172%2C3605%20C171.448%2C3605%20171%2C3605.448%20171%2C3606%20L171%2C3612%20C171%2C3612.552%20171.448%2C3613%20172%2C3613%20C172.552%2C3613%20173%2C3612.552%20173%2C3612%20L173%2C3606%20C173%2C3605.448%20172.552%2C3605%20172%2C3605%20M177%2C3606%20L177%2C3612%20C177%2C3612.552%20176.552%2C3613%20176%2C3613%20C175.448%2C3613%20175%2C3612.552%20175%2C3612%20L175%2C3606%20C175%2C3605.448%20175.448%2C3605%20176%2C3605%20C176.552%2C3605%20177%2C3605.448%20177%2C3606%22%20id%3D%22pause-%5B%231006%5D%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
 }
 
-/* In Progress */
+/* Added */
 li.is-checked:where(li[data-task="/"]) input[type=checkbox],
 .markdown-source-view input[type=checkbox]:where([data-task="/"]):checked {
   background-color: var(--green);
@@ -729,9 +772,7 @@ li.is-checked:where(li[data-task="/"]) input[type=checkbox],
 }
 li.is-checked:where(li[data-task="/"]) input[type=checkbox]:hover,
 .markdown-source-view input[type=checkbox]:where([data-task="/"]):checked:hover {
-  box-shadow: none;
-  border-color: var(--green);
-  pointer-events: none;
+    background-color: color-mix(in srgb, var(--green) 75%, white);
 }
 li.is-checked:where(li[data-task="/"]) input[type=checkbox]::after,
 .markdown-source-view input[type=checkbox]:where([data-task="/"]):checked::after {
@@ -753,9 +794,7 @@ li.is-checked:where(li[data-task="?"]) input[type=checkbox],
 }
 li.is-checked:where(li[data-task="?"]) input[type=checkbox]:hover,
 .markdown-source-view input[type=checkbox]:where([data-task="?"]):checked:hover {
-  box-shadow: none;
-  border-color: var(--dark_bg_6);
-  pointer-events: none;
+    background-color: color-mix(in srgb, var(--dark_bg_6) 75%, white);
 }
 li.is-checked:where(li[data-task="?"]) input[type=checkbox]::after,
 .markdown-source-view input[type=checkbox]:where([data-task="?"]):checked::after {
@@ -776,10 +815,8 @@ li.is-checked:where(li[data-task="!"]) input[type=checkbox],
   border-width: 1px;
 }
 li.is-checked:where(li[data-task="!"]) input[type=checkbox]:hover,
-.markdown-source-view input[type=checkbox]:where([data-task="?"]):checked:hover {
-  box-shadow: none;
-  border-color: var(--orange);
-  pointer-events: none;
+.markdown-source-view input[type=checkbox]:where([data-task="!"]):checked:hover {
+  background-color: color-mix(in srgb, var(--orange) 75%, white);
 }
 li.is-checked:where(li[data-task="!"]) input[type=checkbox]::after,
 .markdown-source-view input[type=checkbox]:where([data-task="!"]):checked::after {
@@ -797,6 +834,7 @@ input[type=checkbox][data-task="!"]::after {
 .markdown-preview-view ul > li.task-list-item.is-checked[data-task]:not([data-task=" "], [data-task="-"], [data-task="|"], [data-task="/"], [data-task="?"], [data-task="!"]) {
     color: var(--viewer-text-faint)
 }
+
 
 
 /* FOLDERS & FILES ____________________________________________________________________ */
