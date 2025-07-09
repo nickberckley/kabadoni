@@ -268,6 +268,16 @@ body.is-focused .workspace-tabs.mod-top {
     color: var(--white_text_2)
 }
 
+/* Reading View */
+.markdown-preview-view {
+    padding-left: 6.2%;
+}
+.markdown-preview-view .list-bullet:after,
+.markdown-preview-view ol > li::marker {
+    background-color: var(--viewer-text-faint);
+    color: var(--viewer-text-faint)
+}
+
 /* Widgets */
 ::-webkit-scrollbar-thumb {
     background-color: var(--dark_bg_3) !important;
@@ -764,9 +774,6 @@ input[type=checkbox]:checked:hover {
         padding-left: 25px;
         height: 99%;
     }
-}
-.markdown-preview-view .callout[data-callout-metadata*="timeline"] {
-    --callout-icon-offset-right: -56.5vw;
 }
 
 /* Directory styling */
