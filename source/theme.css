@@ -616,11 +616,21 @@ table {
 thead {
     border-bottom: 3px solid var(--color-accent) !important;
 }
+
 th {
     font-weight: 1000 !important;
-    font-style: italic;
     border: 1px solid var(--background-secondary) !important;
+    color: var(--white_text_1) !important;
 }
+th i, th em {
+    color: inherit;
+    font-style: italic;
+}
+th b, th strong {
+    color: inherit;
+    font-weight: bold;
+}
+
 td {
     border-left: 1px solid var(--background-secondary) !important;
     border-right: 1px solid var(--background-secondary) !important;
