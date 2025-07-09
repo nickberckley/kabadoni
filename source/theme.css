@@ -13,7 +13,7 @@
     --light_bg_1: #ebe0d8;
     --light_bg_2: #e3d6cc;
     --light_bg_3: #d2c6bc;
-    --light_bg_4: #fffaf6;
+    --light_bg_4: #b9aea5;
 
     --white_text_1: #f2f2f2;
     --white_text_2: #eaeaea;
@@ -82,6 +82,7 @@ body {
     --background-primary:            var(--dark_bg_1);
     --viewer-primary:                var(--dark_bg_3);
     --viewer-secondary:              var(--dark_bg_2);
+    --viewer-tetriary:               var(--dark_bg_5);
     --viewer-flat:                   var(--black_text_2);
 
     --tab-text-color-focused-active:         var(--white_text_2);
@@ -147,6 +148,7 @@ body {
     --background-primary:            var(--light_bg_1);
     --viewer-primary:                var(--light_bg_3);
     --viewer-secondary:              var(--light_bg_2);
+    --viewer-tetriary:               var(--light_bg_4);
     --viewer-flat:                   var(--white_text_1);
 
     --tab-text-color-focused-active:         var(--black_text_2);
@@ -186,8 +188,8 @@ body {
     --table-row-odd-background:      #f0dec5;
 
     /* Code */
-    --code-normal:                   var(--white_text_2);
-    --code-background:               var(--dark_bg_4);
+    --code-normal:                   var(--viewer-text-normal);
+    --code-background:               var(--viewer-primary);
 
     /* Graphs */
     --graph-line:                    var(--dark_bg_5);
@@ -434,6 +436,9 @@ button.kanban-plugin__new-item-button {
 input.kanban-plugin__filter-input {
     color: var(--viewer-text-muted);
 }
+.kanban-plugin__icon {
+    color: var(--viewer-text-faint);
+}
 
 /* Buttons & widgets inside themed areas */
 .vertical-tabs-container .dropdown {
@@ -456,6 +461,15 @@ input.kanban-plugin__filter-input {
 .cm-editor .edit-block-button:hover {
     background-color: var(--viewer-primary) !important;
 }
+.cm-editor .code-block-flair:hover {
+    color: var(--viewer-text-normal);
+    background-color: var(--viewer-tetriary) !important;
+}
+
+.modal-button-container button {
+    color: var(--viewer-text-normal);
+}
+
 
 /* File Properties */
 .mod-header .metadata-property-icon:hover svg,
@@ -488,6 +502,28 @@ input.kanban-plugin__filter-input {
     color-scheme: var(--viewer-color-scheme) !important;
 }
 
+/* Misc. */
+.empty-state-title,
+.workspace .mod-root .workspace-tab-header .workspace-tab-header-inner-icon svg {
+    color: var(--viewer-text-normal) !important;
+    stroke: var(--viewer-text-normal) !important;
+}
+
+.highlighterContainer {
+    color: var(--viewer-bold-color);
+}
+.modal-close-button {
+    color: var(--viewer-text-faint);
+}
+
+.hotkey-filter {
+    color: var(--viewer-bold-color);
+    background-color: var(--viewer-primary);
+}
+.hotkey-filter-remove-button:hover {
+    background-color: var(--dark_bg_6);
+    color: var(--white_text_2)
+}
 
 
 /* SECONDARY ____________________________________________________________________ */
@@ -539,7 +575,7 @@ input[type=checkbox]:checked:hover {
 
 /* Highlight */
 .markdown-rendered mark {
-    border-radius: 10px;
+    border-radius: 5px !important;
 }
 
 /* Calendar */
