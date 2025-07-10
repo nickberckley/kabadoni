@@ -602,9 +602,13 @@ input.kanban-plugin__filter-input {
 }
 
 /* Misc. */
-.empty-state-title,
-.workspace .mod-root .workspace-tab-header .workspace-tab-header-inner-icon svg {
+.empty-state-title {
     color: var(--viewer-text-normal) !important;
+}
+
+/* Tab icons (For active tabs, icon colors have to be manually overriden, because overriding all of them also overrides other icons in the header) */
+.workspace-tab-header.is-active .svg-icon.lucide-layout-dashboard,
+.workspace-tab-header.is-active .svg-icon.lucide-git-fork {
     stroke: var(--viewer-text-normal) !important;
 }
 
