@@ -61,7 +61,6 @@ body {
 
     /* #region ____________________ SHARED ELEMENTS ____________________ */
     --checkbox-color:                var(--white_text_6);
-    --tab-text-color-focused-active-current: var(--viewer-text-muted);
     --inline-title-color:            var(--white_text_4); /* Page title */
     --text-selection:                color-mix(in srgb, var(--color-accent-dim) 60%, transparent);
     --active-line-highlight:         var(--viewer-secondary);
@@ -179,12 +178,26 @@ body.is-focused .workspace-tabs.mod-top {
     background-color: var(--dark_bg_6);
 }
 
+/* Tabs */
+.workspace-tab-header {
+    color: var(--white_text_3);
+    --tab-text-color-focused-active:         var(--viewer-text-muted);
+    --tab-text-color-focused-active-current: var(--viewer-text-muted);
+}
+
 /* Header icons (includes icons in tabs) */
 .workspace-tab-header-inner-icon svg {
     stroke: var(--white_text_4);
 }
 .workspace-tab-header.is-active svg {
     stroke: var(--white_text_1);
+}
+.workspace-tab-header-inner-close-button:hover svg {
+    stroke: var(--white_text_1) !important;
+}
+
+.mod-pinned svg {
+    stroke: var(--color-accent) !important;
 }
 /* #endregion */
 
@@ -394,6 +407,16 @@ input[type='datetime-local'],
 .calendar .week-num:hover, .calendar .day:hover{
     background-color: var(--dark_bg_6) !important;
 }
+
+
+/* Edit block buttons (on code blocks & callouts) */
+.edit-block-button:hover {
+    background-color: var(--viewer-tetriary) !important;
+}
+.code-block-flair:hover {
+    color: var(--viewer-text-normal);
+    background-color: var(--viewer-tetriary) !important;
+}
 /* #endregion */
 
 
@@ -572,16 +595,6 @@ Revert some areas that are overriden by above back to default state
 .vertical-tabs-container .search-input-container:before {
     background-color: var(--viewer-text-muted);
 }
-
-
-/* Edit block buttons (on code blocks & callouts) */
-.cm-editor .edit-block-button:hover {
-    background-color: var(--viewer-tetriary) !important;
-}
-.cm-editor .code-block-flair:hover {
-    color: var(--viewer-text-normal);
-    background-color: var(--viewer-tetriary) !important;
-}
 /* #endregion */
 
 
@@ -628,12 +641,24 @@ Revert some areas that are overriden by above back to default state
     stroke: var(--viewer-text-normal) !important;
 }
 
-/* Close button in overriden areas */
+/* Close tab icons */
+.workspace-tab-header.is-active .workspace-tab-header-inner-close-button svg {
+    stroke: var(--viewer-text-muted) !important;
+}
+.workspace-tab-header.is-active .workspace-tab-header-inner-close-button:hover svg {
+    stroke: var(--white_text_1) !important;
+}
+
+/* Close buttons in overriden areas */
 .modal-close-button {
     color: var(--viewer-text-muted);
 }
 .modal-close-button:hover {
     color: var(--white_text_2);
+}
+
+.search-input-clear-button {
+    color: var(--viewer-text-faint);
 }
 /* #endregion */
 
