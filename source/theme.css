@@ -337,6 +337,12 @@ input[type='datetime-local'],
     caret-color: var(--text-accent);
 }
 
+/* Footnotes */
+.cm-s-obsidian span.cm-footref.cm-hmd-barelink,
+.cm-s-obsidian span.cm-footref.cm-hmd-barelink.cm-formatting {
+    color: var(--color-accent);
+}
+
 
 
 /* EDITOR (Theme Overrides) ___________________________________________________________________________ */
