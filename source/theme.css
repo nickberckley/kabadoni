@@ -126,7 +126,8 @@ body {
     --code-background:               var(--dark_bg_4);
 
     /* Graphs */
-    --graph-line:                    var(--dark_bg_5);
+    --graph-line:                    var(--viewer-tetriary);
+    --graph-text:                    var(--viewer-text-normal);
     --graph-node:                    var(--white_text_2);
     --graph-node-tag:                var(--blue_1);
     --graph-node-attachment:         var(--blue_1);
@@ -192,7 +193,8 @@ body {
     --code-background:               var(--viewer-primary);
 
     /* Graphs */
-    --graph-line:                    var(--dark_bg_5);
+    --graph-line:                    var(--dark_bg_8);
+    --graph-text:                    var(--viewer-text-normal);
     --graph-node:                    var(--black_text_2);
     --graph-node-tag:                var(--blue_1);
     --graph-node-attachment:         var(--blue_1);
@@ -355,6 +357,7 @@ input[type='datetime-local'],
 .vertical-tab-content-container, /* Preferences */
 .view-header, /* Reading window's header (top row buttons) */
 .mod-lg, /* Ribbon customization pop-up */
+.graph-controls, /* Graph controls */
 .popover.hover-popover {
     color: var(--viewer-text-normal);
     --icon-color: var(--readview-icons-color);
@@ -526,7 +529,8 @@ input.kanban-plugin__filter-input {
 .canvas-control-group {
     border: 1px solid var(--viewer-tetriary);
 }
-.canvas-control-item {
+.canvas-control-item,
+.graph-controls-button {
     background-color: var(--viewer-primary);
     border-bottom: 1px solid var(--viewer-tetriary);
     color: var(--viewer-text-muted);
@@ -579,6 +583,22 @@ input.kanban-plugin__filter-input {
 }
 .canvas-group-label[contenteditable="true"] {
     color: var(--viewer-text-normal);
+}
+
+/* Graph */
+.graph-controls-button {
+    background-color: var(--viewer-secondary);
+}
+.graph-control-section .search-input-container input {
+    background-color: var(--viewer-secondary);
+    color: var(--viewer-text-normal);
+}
+.graph-control-section .search-input-container::before {
+    background-color: var(--viewer-text-normal) !important;
+}
+
+.graph-view.color-arrow {
+    color: var(--viewer-text-muted);
 }
 
 /* Misc. */
