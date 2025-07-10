@@ -58,16 +58,13 @@ body {
     --italic-color:                  var(--white_text_2);
     /* #endregion */
 
+
     /* #region ____________________ SHARED ELEMENTS ____________________ */
     --checkbox-color:                var(--white_text_6);
     --tab-text-color-focused-active-current: var(--viewer-text-muted);
     --inline-title-color:            var(--white_text_4); /* Page title */
     --text-selection:                color-mix(in srgb, var(--color-accent-dim) 60%, transparent);
     --active-line-highlight:         var(--viewer-secondary);
-
-    /* Headings */
-    --heading-background:            var(--viewer-secondary);
-    --heading-border:                var(--viewer-primary);
 
     /* Tags */
     --tag-color:                     var(--white_text_3);
@@ -170,60 +167,77 @@ body {
 
 
 
-/* MAIN ____________________________________________________________________ */
-.markdown-rendered mark a {
-    color: var(--test);
-    background-color: var(--test);
-}
-.menu-item:hover:not(.is-disabled):not(.is-label) {
-    background-color: var(--color-accent-dim);
-}
-.nav-file-title.is-active {
-    color: var(--white_text_1);
-    background-color: var(--color-accent-dim);
-}
-.is-live-preview .list-bullet:after {
-    background-color: var(--viewer-text-faint);
-}
-
-/* Workspace */
+/* #region ____________________ REGIONS ____________________ */
+/* #region __________ HEADER __________ */
 .workspace-ribbon .sidebar-toggle-button,
 body .workspace-tabs.mod-top,
 body.is-focused .workspace-tabs.mod-top {
     --tab-container-background: var(--dark_bg_4);
     background-color: var(--dark_bg_4);
 }
-
-.workspace-ribbon.side-dock-ribbon.mod-left {
-    background-color: var(--dark_bg_3);
-}
-.tree-item-children {
-    border-color: var(--dark_bg_5);
-}
-.clickable-icon.is-active {
-    color: var(--white_text_1);
-    background-color: var(--dark_bg_4);
-}
-.search-result-file-matches {
-    color: var(--white_text_3);
-    background-color: var(--dark_bg_1);
-}
 .workspace .mod-root .workspace-tab-header-inner::after {
     background-color: var(--dark_bg_6);
 }
+
+/* Header icons (includes icons in tabs) */
 .workspace-tab-header-inner-icon svg {
     stroke: var(--white_text_4);
 }
 .workspace-tab-header.is-active svg {
     stroke: var(--white_text_1);
 }
-.community-item {
+/* #endregion */
+
+
+/* #region __________ OUTLINER __________ */
+/* Active item */
+.nav-file-title.is-active {
+    color: var(--white_text_1);
+    background-color: var(--color-accent-dim);
+}
+/* Hierarchy line */
+.tree-item-children {
+    border-color: var(--dark_bg_5);
+}
+
+
+/* Multi-file search */
+.search-result-file-matches {
+    color: var(--white_text_3);
     background-color: var(--dark_bg_1);
 }
+.search-result-file-matched-text {
+    padding: 1px 2px;
+    border-radius: 3px;
+    background-color: var(--yellow-dim);
+    color: var(--black_text_1);
+    font-weight: 600;
+}
+/* #endregion */
+
+
+/* Status Bar */
 .status-bar {
     background-color: var(--dark_bg_4);
     margin-right: 301px;
 }
+
+/* Ribbon */
+.workspace-ribbon.side-dock-ribbon.mod-left {
+    background-color: var(--dark_bg_3);
+}
+/* #endregion */
+
+
+
+/* #region ____________________ WINDOWS ____________________ */
+/* Community plugins */
+.community-item {
+    background-color: var(--dark_bg_1);
+}
+
+
+/* Suggestions (this window is shared by many pop-ups, including tag suggestions, file property suggestions, font picker, etc.) */
 .suggestion {
     background-color: var(--background-primary);
     color: var(--color-accent);
@@ -234,43 +248,112 @@ body.is-focused .workspace-tabs.mod-top {
     color: var(--white_text_2)
 }
 
-/* Reading View */
-.markdown-preview-view {
-    padding-left: 6.2%;
+
+/* Pop-up search windows (Ctrl-P, Ctrl-O) */
+input.prompt-input:focus-visible {
+    border-bottom: none;
+    background-color: var(--viewer-secondary);
 }
-.markdown-preview-view .list-bullet:after,
-.markdown-preview-view ol > li::marker {
-    background-color: var(--viewer-text-faint);
-    color: var(--viewer-text-faint)
+.prompt-results .suggestion-item.is-selected {
+    background-color: var(--viewer-primary);
+    color: var(--viewer-text-normal)
+}
+.prompt-instructions {
+    border-top: 1px solid var(--viewer-primary);
 }
 
-/* Widgets */
+/* Separating operator label & category in pop-up search windows */
+.prompt .suggestion-prefix:after {
+    display: none;
+}
+.prompt .suggestion-item {
+    position: relative;
+}
+.prompt .suggestion-prefix.suggestion-prefix{
+    color: var(--white_text_2);
+    background-color: var(--dark_bg_4);
+    border-radius: 5px;
+    padding: 2px 4px 2px;
+    position: absolute;
+    top: 10%;
+    right: 20%;
+    font-size: var(--font-ui-small);
+}
+/* #endregion */
+
+
+
+/* #region ____________________ UI ____________________ */
+/* Dropdowns */
+.menu {
+    border-color: var(--dark_bg_5);
+    background-color: var(--dark_bg_2);
+}
+.menu-item:hover:not(.is-disabled):not(.is-label) {
+    background-color: var(--color-accent-dim);
+}
+.dropdown {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FFF' opacity='0.6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='m7 15 5 5 5-5'/%3E%3Cpath d='m7 9 5-5 5 5'/%3E%3C/svg%3E");
+}
+
+select option {
+    background-color: var(--dark_bg_3) !important;
+    color: var(--white_text_2) !important;
+}
+
+
+/* Checkbox */
+input[type=checkbox] {
+    border: 1px solid var(--checkbox-color);
+}
+input[type=checkbox]:checked {
+    background-color: var(--color-accent);
+}
+input[type=checkbox]:hover,
+input[type=checkbox]:checked:hover {
+    border: 1px solid var(--viewer-text-normal);
+}
+input[type=checkbox]:checked:hover {
+    background-color: color-mix(in srgb, var(--color-accent) 75%, white);
+}
+
+
+/* Scrollbars */
 ::-webkit-scrollbar-thumb {
     background-color: var(--dark_bg_4) !important;
 }
 ::-webkit-scrollbar-thumb:hover {
     background-color: var(--dark_bg_6) !important;
 }
-.dropdown {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FFF' opacity='0.6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='m7 15 5 5 5-5'/%3E%3Cpath d='m7 9 5-5 5 5'/%3E%3C/svg%3E");
-}
-.menu {
-    border-color: var(--dark_bg_5)
-}
+
+
+/* Search widget */
 .search-input-container input {
     background-color: var(--dark_bg_3);
 }
-select option {
-    background-color: var(--dark_bg_4) !important;
-    color: var(--white_text_2) !important;
-}
+
+
+/* Expanded toggles */
 .checkbox-container {
     background-color: var(--dark_bg_4);
 }
+
+
+/* Clickable icons */
+.clickable-icon.is-active {
+    color: var(--white_text_1);
+    background-color: var(--dark_bg_4);
+}
+
+
+/* Operator buttons */
 .text-icon-button:hover {
     background-color: var(--color-accent);
     color: var(--white_text_2);
 }
+
+
+/* File properties */
 .metadata-property-value:focus-within {
     background-color: var(--dark_bg_4);
 }
@@ -280,28 +363,75 @@ input[type='datetime-local'],
     color-scheme: dark !important;
 }
 
+
+/* Keymaps */
+.suggestion-hotkey,
+.setting-hotkey {
+    color: var(--white_text_2);
+    background-color: var(--dark_bg_5);
+}
+
+.hotkey-filter {
+    color: var(--viewer-bold-color);
+    background-color: var(--viewer-primary);
+}
+.hotkey-filter-remove-button:hover {
+    background-color: var(--dark_bg_6);
+    color: var(--white_text_2)
+}
+
+
+/* Suggestion highlights */
+.suggestion-highlight{
+    color: var(--yellow);
+}
+
+
+/* Calendar */
+.calendar .week-num {
+    color: var(--white_text_5) !important;
+}
+.calendar .week-num:hover, .calendar .day:hover{
+    background-color: var(--dark_bg_6) !important;
+}
+/* #endregion */
+
+
+
+/* #region ____________________ VIEWER AREA ____________________ */
+/* List bullets */
+.is-live-preview .list-bullet:after,
+.markdown-preview-view .list-bullet:after,
+.markdown-preview-view ol > li::marker {
+    background-color: var(--viewer-text-faint);
+    color: var(--viewer-text-faint);
+}
+.cm-s-obsidian .cm-formatting-list {
+    color: var(--text-faint);
+}
+
+
 /* Active line */
-.cm-active{
+.cm-active {
     background-color: var(--active-line-highlight);
+}
+.cm-active .list-bullet:after {
+    background-color: var(--viewer-text-muted);
+}
+.cm-active .cm-formatting-list {
+    color: var(--text-muted);
 }
 .cm-gutterElement.cm-active {
     color: var(--text-muted);
     background-color: var(--background-primary);
 }
-.cm-s-obsidian .cm-formatting-list {
-    color: var(--text-faint);
-}
-.cm-active :is(.cm-formatting-list) {
-    color: var(--text-muted);
-}
-.is-live-preview .cm-active .list-bullet:after {
-    background-color: var(--viewer-text-muted);
-}
+
 
 /* Caret cursor */
 .cm-line {
     caret-color: var(--text-accent);
 }
+
 
 /* Footnotes */
 .cm-s-obsidian span.cm-footref.cm-hmd-barelink,
@@ -310,33 +440,20 @@ input[type='datetime-local'],
 }
 
 
-
-/* EDITOR (Theme Overrides) ___________________________________________________________________________ */
-.cm-editor,
-.markdown-preview-view,
-.kanban-plugin__item-wrapper,
-.mod-confirmation, /* Pop-up windows (example: font selector in preferences) */
-.prompt, /* Pop-up search windows (example: Ctrl-P, Ctrl-O) */
-.community-modal-details, /* Plugin & theme pages */
-.vertical-tab-content-container, /* Preferences */
-.view-header, /* Reading window's header (top row buttons) */
-.mod-lg, /* Ribbon customization pop-up */
-.graph-controls, /* Graph controls */
-.popover.hover-popover {
-    color:                       var(--viewer-text-normal);
-    --icon-color:                var(--readview-icons-color);
-    --text-normal:               var(--viewer-text-normal);
-    --text-faint:                var(--viewer-text-faint);
-    --text-muted:                var(--viewer-text-muted);
-    --bold-color:                var(--viewer-bold-color);
-    --italic-color:              var(--viewer-italic-color);
-    caret-color:                 var(--color-accent);
-    font-weight:                 var(--viewer-font-weight);
+/* Headings (H1) */
+.HyperMD-header-1 {
+    background-color: var(--viewer-secondary);
+    border: 1px solid var(--viewer-primary);
+    border-radius: 5px;
+    border-top: 5px;
 }
 
-.modal-container.mod-dim .modal {
-    background-color: var(--background-primary);
+
+/* Highlight */
+.markdown-rendered mark {
+    border-radius: 5px !important;
 }
+
 
 /* Linked mentions at the bottom of the page */
 .markdown-preview-view .tree-item-inner,
@@ -368,18 +485,6 @@ input[type='datetime-local'],
     color: var(--viewer-text-muted);
 }
 
-/* Pop-up search windows (Ctrl-P, Ctrl-O) */
-.prompt-results .suggestion-item.is-selected {
-    background-color: var(--viewer-primary);
-    color: var(--viewer-text-normal)
-}
-input.prompt-input:focus-visible {
-    border-bottom: none;
-    background-color: var(--viewer-secondary);
-}
-.prompt-instructions {
-    border-top: 1px solid var(--viewer-primary);
-}
 
 /* Search inside document */
 .document-search {
@@ -397,33 +502,60 @@ input.prompt-input:focus-visible {
 .document-search-input:before {
     background-color: var(--viewer-text-muted);
 }
+/* #endregion */
 
-/* Kanban */
-.kanban-plugin__lane-form-wrapper,
-.kanban-plugin__lane {
-    background-color: var(--viewer-secondary);
-    border-color: var(--viewer-primary);
-    color: var(--viewer-text-normal);
-}
-.kanban-plugin__lane-header-wrapper,
-.kanban-plugin__item-button-wrapper,
-div.kanban-plugin__lane-title-count,
-.kanban-plugin__item-form,
-button.kanban-plugin__new-item-button {
-    color: var(--viewer-text-muted);
-    border-color: var(--viewer-primary);
-}
-.kanban-plugin__lane-action-cancel {
-    color: var(--viewer-text-normal) !important;
-}
-input.kanban-plugin__filter-input {
-    color: var(--viewer-text-muted);
-}
-.kanban-plugin__icon {
-    color: var(--viewer-text-faint);
+
+
+/* Reading View */
+.markdown-preview-view {
+    padding-left: 6.2%;
 }
 
-/* Buttons & widgets inside themed areas */
+
+
+/* #region: VIEWER AREA (Theme Overrides) ___________________________________________________________________________ */
+.cm-editor,
+.markdown-preview-view,
+.modal-container, /* Pop-up windows */
+.kanban-plugin__item-wrapper, /* Kanban tasks */
+.community-modal-details, /* Plugin & theme pages */
+.view-header, /* Viewing areas header (top row buttons) */
+.graph-controls, /* Graph controls */
+.popover.hover-popover {
+    color:                       var(--viewer-text-normal);
+    --icon-color:                var(--readview-icons-color);
+    --text-normal:               var(--viewer-text-normal);
+    --text-faint:                var(--viewer-text-faint);
+    --text-muted:                var(--viewer-text-muted);
+    --bold-color:                var(--viewer-bold-color);
+    --italic-color:              var(--viewer-italic-color);
+    caret-color:                 var(--color-accent);
+    font-weight:                 var(--viewer-font-weight);
+}
+
+/*
+Revert some areas that are overriden by above back to default state
+- Preferences sidebar (vertical-tab-header);
+- Preferences community plugins & themes (modal-sidebar);
+- Highlightr plugin pop-up menu (menu-scroll);
+*/
+.vertical-tab-header,
+.menu-scroll,
+.modal-sidebar {
+    background-color:            var(--dark_bg_2);
+    color:                       var(--white_text_3);
+    --icon-color:                var(--readview-icons-color);
+    --text-normal:               var(--white_text_2);
+    --text-muted:                var(--white_text_3);
+    --text-faint:                var(--white_text_6);
+    --bold-color:                var(--white_text_1);
+    --italic-color:              var(--white_text_2);
+    font-weight:                 400;
+}
+
+
+/* #region: __________ UI overrides inside themed areas __________ */
+/* Dropdowns */
 .vertical-tabs-container .dropdown {
     background-image: var(--viewer-svg-collapse);
 }
@@ -431,16 +563,18 @@ input.kanban-plugin__filter-input {
     background-color: var(--viewer-flat) !important;
     color: var(--viewer-text-muted) !important;
 }
-.vertical-tabs-container .setting-hotkey {
-    color: var(--white_text_2);
-    background-color: var(--dark_bg_5);
-}
+
+
+/* Search widget */
 .vertical-tabs-container .search-input-container input {
     background-color: var(--viewer-primary);
 }
 .vertical-tabs-container .search-input-container:before {
     background-color: var(--viewer-text-muted);
 }
+
+
+/* Edit block buttons (on code blocks & callouts) */
 .cm-editor .edit-block-button:hover {
     background-color: var(--viewer-tetriary) !important;
 }
@@ -448,17 +582,17 @@ input.kanban-plugin__filter-input {
     color: var(--viewer-text-normal);
     background-color: var(--viewer-tetriary) !important;
 }
+/* #endregion */
 
-.modal-button-container button {
-    color: var(--viewer-text-normal);
-}
 
-/* File Properties */
+/* #region: __________ File properties inside themed areas __________ */
+/* Icons */
 .mod-header .metadata-property-icon:hover svg,
 .cm-editor .metadata-property-icon:hover svg {
     color: var(--viewer-bold-color) !important;
 }
 
+/* Labels */
 .mod-header .metadata-property-key input,
 .cm-editor .metadata-property-key input {
     color: var(--viewer-text-muted);
@@ -468,6 +602,7 @@ input.kanban-plugin__filter-input {
     background-color: var(--viewer-primary) !important;
 }
 
+/* Values */
 .mod-header .metadata-property-value,
 .mod-header .metadata-input-longtext,
 .cm-editor .metadata-property-value,
@@ -483,13 +618,81 @@ input.kanban-plugin__filter-input {
 .cm-editor input[type='datetime-local'] {
     color-scheme: var(--viewer-color-scheme) !important;
 }
+/* #endregion */
 
-/* Canvas */
+
+/* Tab icons (for active tabs, icon colors have to be manually overriden, because overriding all of them also overrides other icons in the header) */
+.workspace-tab-header.is-active .svg-icon.lucide-layout-dashboard,
+.workspace-tab-header.is-active .svg-icon.lucide-trello,
+.workspace-tab-header.is-active .svg-icon.lucide-git-fork {
+    stroke: var(--viewer-text-normal) !important;
+}
+
+/* Close button in overriden areas */
+.modal-close-button {
+    color: var(--viewer-text-muted);
+}
+.modal-close-button:hover {
+    color: var(--white_text_2);
+}
+/* #endregion */
+
+
+
+/* #region ____________________ PAGES ____________________ */
+.empty-state-title {
+    color: var(--viewer-text-normal) !important;
+}
+
+/* #region __________ KANBAN __________ */
+.kanban-plugin__lane-header-wrapper,
+.kanban-plugin__item-button-wrapper,
+div.kanban-plugin__lane-title-count,
+.kanban-plugin__item-form,
+button.kanban-plugin__new-item-button {
+    color: var(--viewer-text-muted);
+    border-color: var(--viewer-primary);
+}
+
+/* Groups */
+.kanban-plugin__lane-form-wrapper,
+.kanban-plugin__lane {
+    background-color: var(--viewer-secondary);
+    border-color: var(--viewer-primary);
+    color: var(--viewer-text-normal);
+}
+
+/* Search in Kanban pages */
+input.kanban-plugin__filter-input {
+    background-color: var(--viewer-primary);
+    color: var(--viewer-text-muted);
+}
+
+/* Tags in Kanban preferences */
+.kanban-plugin__setting-item,
+.kanban-plugin__item-tags {
+    background-color: var(--viewer-primary) !important;
+}
+
+/* "Done" button when adding new task */
+.kanban-plugin__lane-action-cancel {
+    color: var(--viewer-text-normal) !important;
+}
+
+/* Dropdown menu icons in Kanban pages */
+.kanban-plugin__icon {
+    color: var(--viewer-text-faint);
+}
+/* #endregion */
+
+
+/* #region __________ CANVAS __________ */
 .canvas-background {
     background-color: var(--background-primary);
     stroke: var(--viewer-primary) !important;
 }
 
+/* Canvas buttons */
 .canvas-control-group {
     border: 1px solid var(--viewer-tetriary);
 }
@@ -501,43 +704,37 @@ input.kanban-plugin__filter-input {
 }
 .canvas-control-item:hover {
     background-color: var(--viewer-secondary);
-    color: var(--viewer-text-muted);
+    color: var(--viewer-text-normal);
 }
 .canvas-control-item.is-disabled svg {
     color: var(--viewer-text-faint) !important;
 }
 
+/* Canvas bottom menu */
 .canvas-card-menu {
-    background-color: var(--viewer-secondary);
+    background-color: var(--viewer-secondary) !important;
 }
 .canvas-card-menu .canvas-card-menu-button svg,
 .canvas-menu button {
     color: var(--viewer-text-muted);
-    fill: var(--viewer-secondary);
+    fill: var(--viewer-secondary) !important;
 }
 .canvas-card-menu .canvas-card-menu-button:hover svg {
-    color: var(--color-accent);
+    color: var(--color-accent) !important;
 }
 
+/* Canvas cards (empty) */
 .file-embed.mod-generic,
 .file-embed.mod-generic:hover,
 .file-embed.mod-empty {
     background-color: var(--viewer-secondary);
     color: var(--viewer-text-normal);
-    fill: lime;
 }
 .file-embed-icon {
     color: var(--viewer-text-muted);
 }
 
-.mod-canvas-help .modal-content,
-.mod-canvas-help .modal-header {
-    color: var(--viewer-text-normal);
-}
-.canvas-instruction-desc {
-    color: var(--white_text_2);
-}
-
+/* Canvas card labels */
 .canvas-node-label:hover,
 .canvas-node.is-focused .canvas-node-label {
     color: var(--viewer-text-muted);
@@ -548,11 +745,18 @@ input.kanban-plugin__filter-input {
 .canvas-group-label[contenteditable="true"] {
     color: var(--viewer-text-normal);
 }
+/* #endregion */
 
-/* Graph */
+
+/* #region __________ GRAPH __________ */
 .graph-controls-button {
     background-color: var(--viewer-secondary);
 }
+.graph-view.color-arrow {
+    color: var(--viewer-text-muted);
+}
+
+/* Search in graph page */
 .graph-control-section .search-input-container input {
     background-color: var(--viewer-secondary);
     color: var(--viewer-text-normal);
@@ -560,116 +764,12 @@ input.kanban-plugin__filter-input {
 .graph-control-section .search-input-container::before {
     background-color: var(--viewer-text-normal) !important;
 }
-
-.graph-view.color-arrow {
-    color: var(--viewer-text-muted);
-}
-
-/* Misc. */
-.empty-state-title {
-    color: var(--viewer-text-normal) !important;
-}
-
-/* Tab icons (For active tabs, icon colors have to be manually overriden, because overriding all of them also overrides other icons in the header) */
-.workspace-tab-header.is-active .svg-icon.lucide-layout-dashboard,
-.workspace-tab-header.is-active .svg-icon.lucide-git-fork {
-    stroke: var(--viewer-text-normal) !important;
-}
-
-.highlighterContainer {
-    color: var(--viewer-bold-color);
-}
-.modal-close-button {
-    color: var(--viewer-text-faint);
-}
-
-.hotkey-filter {
-    color: var(--viewer-bold-color);
-    background-color: var(--viewer-primary);
-}
-.hotkey-filter-remove-button:hover {
-    background-color: var(--dark_bg_6);
-    color: var(--white_text_2)
-}
-
-
-/* SECONDARY ____________________________________________________________________ */
-/* Suggestion in search windows */
-.suggestion-highlight{
-    color: var(--yellow);
-}
-
-/* Search popup */
-.prompt .suggestion-prefix:after {
-    display: none;
-}
-.prompt .suggestion-item {
-    position: relative;
-}
-.prompt .suggestion-prefix.suggestion-prefix{
-    color: var(--white_text_2);
-    background-color: var(--dark_bg_4);
-    border-radius: 5px;
-    padding: 2px 4px 2px;
-    position: absolute;
-    top: 10%;
-    right: 20%;
-    font-size: var(--font-ui-small);
-}
-
-/* Headings (H1) */
-.HyperMD-header-1 {
-    background-color: var(--heading-background);
-    border: 1px solid var(--heading-border);
-    border-radius: 5px;
-    border-top: 5px;
-}
-
-/* Checkbox */
-input[type=checkbox] {
-    border: 1px solid var(--checkbox-color);
-}
-input[type=checkbox]:checked {
-    background-color: var(--color-accent);
-}
-input[type=checkbox]:hover,
-input[type=checkbox]:checked:hover {
-    border: 1px solid var(--viewer-text-normal);
-}
-input[type=checkbox]:checked:hover {
-    background-color: color-mix(in srgb, var(--color-accent) 75%, white);
-}
-
-/* Highlight */
-.markdown-rendered mark {
-    border-radius: 5px !important;
-}
-
-/* Calendar */
-.calendar .week-num {
-    color: var(--white_text_5) !important;
-}
-.calendar .week-num:hover, .calendar .day:hover{
-    background-color: var(--dark_bg_6) !important;
-}
-
-/* Multi-file search */
-.search-result-file-matched-text {
-    padding: 1px 2px;
-    border-radius: 3px;
-    background-color: var(--yellow-dim);
-    color: var(--black_text_1);
-    font-weight: 600;
-}
-
-/* Tags */
-.cm-hashtag {
-    color: var(--white_text_3) !important;
-}
+/* #endregion */
+/* #endregion */
 
 
 
-/* CALLOUTS ____________________________________________________________________ */
+/* #region ____________________ CALLOUTS ____________________ */
 .cm-callout {
     border-radius: 5px;
     box-shadow: -1px 2px 1px var(--viewer-callout-box-shadow);
@@ -707,6 +807,7 @@ input[type=checkbox]:checked:hover {
     cursor: pointer;
 }
 
+/* #region __________ Callout colors __________ */
 .callout[data-callout=note] {
     --callout-color: #b6cacf;
 }
@@ -760,8 +861,10 @@ input[type=checkbox]:checked:hover {
 .callout[data-callout=cite] {
     --callout-color: #dbcbba;
 }
+/* #endregion */
 
-/* Timeline styling */
+
+/* #region __________ STYLING: TIMELINE __________ */
 .cm-callout:has(.callout[data-callout-metadata*="timeline"]) {
     box-shadow: none;
 }
@@ -832,8 +935,10 @@ input[type=checkbox]:checked:hover {
         height: 99%;
     }
 }
+/* #endregion */
 
-/* Directory styling */
+
+/* #region __________ STYLING: DIRECTORY __________ */
 .callout[data-callout-metadata*="directory"] {
     position: relative;
     --indentation-guide-color: transparent;
@@ -891,8 +996,10 @@ input[type=checkbox]:checked:hover {
         display: none;
     }
 }
+/* #endregion */
 
-/* Icon styling */
+
+/* #region __________ STYLING: ICON __________ */
 .callout[data-callout-metadata*="icon"] {
     position: relative;
 }
@@ -906,8 +1013,10 @@ input[type=checkbox]:checked:hover {
         right: var(--callout-icon-offset-right);
     }
 }
+/* #endregion */
 
-/* Outline styling */
+
+/* #region __________ STYLING: OUTLINE __________ */
 .callout[data-callout-metadata*="outline"] {
     .callout-content {
         background-color: var(--background-primary);
@@ -915,9 +1024,12 @@ input[type=checkbox]:checked:hover {
         box-shadow: None;
     }
 }
+/* #endregion */
+/* #endregion */
 
 
-/* TABLE ____________________________________________________________________ */
+
+/* #region ____________________ TABLE ____________________ */
 table {
     border: 1px solid var(--background-secondary) !important;
     color: var(--viewer-text-normal);
@@ -926,6 +1038,7 @@ thead {
     border-bottom: 3px solid var(--color-accent) !important;
 }
 
+/* Table header */
 th {
     font-weight: 1000 !important;
     border: 1px solid var(--background-secondary) !important;
@@ -952,11 +1065,12 @@ td {
 .markdown-rendered tbody tr:nth-child(odd) {
     background-color: var(--table-row-odd-background) !important;
 }
+/* #endregion */
 
 
 
-/* TASKS ____________________________________________________________________ */
-/* Ongoing */
+/* #region ____________________ TASKS ____________________ */
+/* #region __________ TASK: ONGOING __________ */
 li.is-checked:where(li[data-task="-"]) input[type=checkbox],
 .markdown-source-view input[type=checkbox]:where([data-task="-"]):checked {
   background-color: var(--yellow);
@@ -979,8 +1093,10 @@ input[type=checkbox][data-task="-"]::after {
   color: lime;
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%20-12%2032%2032%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20xmlns%3Asketch%3D%22http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%2Fns%22%20fill%3D%22%23000000%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Ctitle%3Eminus%3C%2Ftitle%3E%3Cdesc%3ECreated%20with%20Sketch%20Beta.%3C%2Fdesc%3E%3Cdefs%3E%3C%2Fdefs%3E%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%20sketch%3Atype%3D%22MSPage%22%3E%3Cg%20id%3D%22Icon-Set-Filled%22%20sketch%3Atype%3D%22MSLayerGroup%22%20transform%3D%22translate(-414.000000%2C%20-1049.000000)%22%20fill%3D%22%23000000%22%3E%3Cpath%20d%3D%22M442%2C1049%20L418%2C1049%20C415.791%2C1049%20414%2C1050.79%20414%2C1053%20C414%2C1055.21%20415.791%2C1057%20418%2C1057%20L442%2C1057%20C444.209%2C1057%20446%2C1055.21%20446%2C1053%20C446%2C1050.79%20444.209%2C1049%20442%2C1049%22%20id%3D%22minus%22%20sketch%3Atype%3D%22MSShapeGroup%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
 }
+/* #endregion */
 
-/* Failed */
+
+/* #region __________ TASK: FAILED __________ */
 li.is-checked:where(li[data-task=X]) input[type=checkbox],
 .markdown-source-view input[type=checkbox]:where([data-task=X]):checked {
   background-color: var(--red);
@@ -1001,8 +1117,10 @@ input[type=checkbox][data-task=X]::after {
   background-color: var(--background-primary);
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20fill%3D%22%23000000%22%20viewBox%3D%220%200%2032%2032%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cpath%20d%3D%22M18.8%2C16l5.5-5.5c0.8-0.8%2C0.8-2%2C0-2.8l0%2C0C24%2C7.3%2C23.5%2C7%2C23%2C7c-0.5%2C0-1%2C0.2-1.4%2C0.6L16%2C13.2l-5.5-5.5%20c-0.8-0.8-2.1-0.8-2.8%2C0C7.3%2C8%2C7%2C8.5%2C7%2C9.1s0.2%2C1%2C0.6%2C1.4l5.5%2C5.5l-5.5%2C5.5C7.3%2C21.9%2C7%2C22.4%2C7%2C23c0%2C0.5%2C0.2%2C1%2C0.6%2C1.4%20C8%2C24.8%2C8.5%2C25%2C9%2C25c0.5%2C0%2C1-0.2%2C1.4-0.6l5.5-5.5l5.5%2C5.5c0.8%2C0.8%2C2.1%2C0.8%2C2.8%2C0c0.8-0.8%2C0.8-2.1%2C0-2.8L18.8%2C16z%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
 }
+/* #endregion */
 
-/* Paused */
+
+/* #region __________ TASK: PAUSED __________ */
 li.is-checked:where(li[data-task="|"]) input[type=checkbox],
 .markdown-source-view input[type=checkbox]:where([data-task="|"]):checked {
   background-color: var(--grey);
@@ -1023,30 +1141,34 @@ input[type=checkbox][data-task="|"]::after {
   background-color: var(--background-primary);
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20viewBox%3D%22-1%200%208%208%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20fill%3D%22%23000000%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Ctitle%3Epause%20%5B%231006%5D%3C%2Ftitle%3E%3Cdesc%3ECreated%20with%20Sketch.%3C%2Fdesc%3E%3Cdefs%3E%3C%2Fdefs%3E%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20id%3D%22Dribbble-Light-Preview%22%20transform%3D%22translate(-227.000000%2C%20-3765.000000)%22%20fill%3D%22%23000000%22%3E%3Cg%20id%3D%22icons%22%20transform%3D%22translate(56.000000%2C%20160.000000)%22%3E%3Cpath%20d%3D%22M172%2C3605%20C171.448%2C3605%20171%2C3605.448%20171%2C3606%20L171%2C3612%20C171%2C3612.552%20171.448%2C3613%20172%2C3613%20C172.552%2C3613%20173%2C3612.552%20173%2C3612%20L173%2C3606%20C173%2C3605.448%20172.552%2C3605%20172%2C3605%20M177%2C3606%20L177%2C3612%20C177%2C3612.552%20176.552%2C3613%20176%2C3613%20C175.448%2C3613%20175%2C3612.552%20175%2C3612%20L175%2C3606%20C175%2C3605.448%20175.448%2C3605%20176%2C3605%20C176.552%2C3605%20177%2C3605.448%20177%2C3606%22%20id%3D%22pause-%5B%231006%5D%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
 }
+/* #endregion */
 
-/* Added */
-li.is-checked:where(li[data-task="/"]) input[type=checkbox],
-.markdown-source-view input[type=checkbox]:where([data-task="/"]):checked {
+
+/* #region __________ TASK: ADDED __________ */
+li.is-checked:where(li[data-task="+"]) input[type=checkbox],
+.markdown-source-view input[type=checkbox]:where([data-task="+"]):checked {
   background-color: var(--green);
   border-width: 1px;
 }
-li.is-checked:where(li[data-task="/"]) input[type=checkbox]:hover,
-.markdown-source-view input[type=checkbox]:where([data-task="/"]):checked:hover {
+li.is-checked:where(li[data-task="+"]) input[type=checkbox]:hover,
+.markdown-source-view input[type=checkbox]:where([data-task="+"]):checked:hover {
     background-color: color-mix(in srgb, var(--green) 75%, white);
 }
-li.is-checked:where(li[data-task="/"]) input[type=checkbox]::after,
-.markdown-source-view input[type=checkbox]:where([data-task="/"]):checked::after {
+li.is-checked:where(li[data-task="+"]) input[type=checkbox]::after,
+.markdown-source-view input[type=checkbox]:where([data-task="+"]):checked::after {
   -webkit-mask-size: 90%;
   pointer-events: none;
   left: -2px;
 }
-li[data-task="/"] input[type=checkbox]:checked::after,
-input[type=checkbox][data-task="/"]::after {
+li[data-task="+"] input[type=checkbox]:checked::after,
+input[type=checkbox][data-task="+"]::after {
   background-color: var(--background-primary);
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20fill%3D%22%23000000%22%20viewBox%3D%220%200%2024%2024%22%20version%3D%221.2%22%20baseProfile%3D%22tiny%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cpath%20d%3D%22M18%2010h-4v-4c0-1.104-.896-2-2-2s-2%20.896-2%202l.071%204h-4.071c-1.104%200-2%20.896-2%202s.896%202%202%202l4.071-.071-.071%204.071c0%201.104.896%202%202%202s2-.896%202-2v-4.071l4%20.071c1.104%200%202-.896%202-2s-.896-2-2-2z%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
 }
+/* #endregion */
 
-/* Question */
+
+/* #region __________ TASK: QUESTION __________ */
 li.is-checked:where(li[data-task="?"]) input[type=checkbox],
 .markdown-source-view input[type=checkbox]:where([data-task="?"]):checked {
   background-color: var(--grey);
@@ -1067,8 +1189,10 @@ input[type=checkbox][data-task="?"]::after {
   background-color: var(--background-primary);
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20fill%3D%22%23000000%22%20viewBox%3D%22-3.5%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cpath%20d%3D%22m11.403%2018.751v4.499c-.01.41-.34.74-.748.75h-.001-4.495c-.41-.01-.739-.34-.749-.748v-.001-4.499c.01-.41.34-.739.749-.749h.001%204.499c.41.01.74.34.75.749v.001zm5.923-11.247c-.001%201.232-.353%202.382-.962%203.354l.015-.026c-.297.426-.637.793-1.021%201.108l-.01.008c-.321.282-.672.55-1.042.794l-.036.022q-.413.253-1.144.665c-.526.302-.957.713-1.275%201.204l-.009.014c-.272.348-.456.776-.515%201.243l-.001.012c-.004.233-.088.445-.226.611l.001-.002c-.115.171-.306.284-.524.29h-.001-4.499c-.217-.015-.399-.153-.479-.343l-.001-.004c-.121-.201-.194-.443-.197-.702v-.845c.025-1.142.485-2.172%201.219-2.935l-.001.001c.729-.849%201.622-1.535%202.633-2.013l.048-.02c.615-.25%201.139-.606%201.574-1.049l.001-.001c.293-.359.471-.822.471-1.327%200-.034-.001-.068-.002-.102v.005c-.035-.597-.374-1.108-.863-1.382l-.009-.004c-.546-.376-1.222-.6-1.95-.6-.023%200-.046%200-.068.001h.003c-.04-.002-.087-.003-.134-.003-.701%200-1.355.204-1.905.555l.014-.009c-.748.641-1.408%201.349-1.981%202.125l-.025.035c-.133.181-.343.297-.581.3-.175-.006-.337-.061-.472-.152l.003.002-3.074-2.343c-.151-.111-.257-.275-.29-.464l-.001-.004c-.007-.039-.011-.084-.011-.129%200-.147.043-.283.116-.398l-.002.003c1.657-2.999%204.799-4.996%208.409-4.996.103%200%20.205.002.307.005h-.015c1.088.007%202.124.22%203.074.602l-.057-.02c1.047.402%201.952.926%202.757%201.571l-.02-.016c.809.653%201.474%201.447%201.966%202.349l.02.041c.483.857.768%201.881.769%202.971z%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
 }
+/* #endregion */
 
-/* Critical */
+
+/* #region __________ TASK: CRITICAL __________ */
 li.is-checked:where(li[data-task="!"]) input[type=checkbox],
 .markdown-source-view input[type=checkbox]:where([data-task="!"]):checked {
   background-color: var(--orange);
@@ -1089,15 +1213,31 @@ input[type=checkbox][data-task="!"]::after {
   background-color: var(--background-primary);
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20fill%3D%22%23000000%22%20viewBox%3D%22-160%200%20512%20512%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cpath%20d%3D%22M176%20432c0%2044.112-35.888%2080-80%2080s-80-35.888-80-80%2035.888-80%2080-80%2080%2035.888%2080%2080zM25.26%2025.199l13.6%20272C39.499%20309.972%2050.041%20320%2062.83%20320h66.34c12.789%200%2023.331-10.028%2023.97-22.801l13.6-272C167.425%2011.49%20156.496%200%20142.77%200H49.23C35.504%200%2024.575%2011.49%2025.26%2025.199z%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
 }
+/* #endregion */
 
-.markdown-source-view .HyperMD-task-line[data-task]:not([data-task=" "], [data-task="-"], [data-task="|"], [data-task="/"], [data-task="?"], [data-task="!"]),
-.markdown-preview-view ul > li.task-list-item.is-checked[data-task]:not([data-task=" "], [data-task="-"], [data-task="|"], [data-task="/"], [data-task="?"], [data-task="!"]) {
+
+.markdown-source-view .HyperMD-task-line[data-task]:not(
+    [data-task=" "],
+    [data-task="-"],
+    [data-task="|"],
+    [data-task="+"],
+    [data-task="?"],
+    [data-task="!"]),
+.markdown-preview-view ul > li.task-list-item.is-checked[data-task]:not(
+    [data-task=" "],
+    [data-task="-"],
+    [data-task="|"],
+    [data-task="/"],
+    [data-task="?"],
+    [data-task="!"]
+) {
     color: var(--viewer-text-faint)
 }
+/* #endregion */
 
 
 
-/* FOLDERS & FILES ____________________________________________________________________ */
+/* #region ____________________ FILES & FOLDERS ____________________ */
 /* Grey out hidden file names */
 .nav-file-title[data-path*="__"] {
     color: var(--white_text_5);
@@ -1112,7 +1252,7 @@ body:not(.is-grabbing) .tree-item-self.is-clickable.nav-file-title:hover[data-pa
 }
 
 
-/* FOLDERS ____________________________________________________________________ */
+/* #region __________ FOLDERS __________ */
 body:not(.nav-folder-indicators) .nav-folder .nav-folder-title-content::before {
     display: inline-block;
     content: "";
@@ -1128,9 +1268,10 @@ body:not(.nav-folder-indicators) .nav-folder.is-collapsed .nav-folder-title-cont
     background-color: var(--yellow-dim);
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M2.06935%205.25839C2%205.62595%202%206.06722%202%206.94975V14C2%2017.7712%202%2019.6569%203.17157%2020.8284C4.34315%2022%206.22876%2022%2010%2022H14C17.7712%2022%2019.6569%2022%2020.8284%2020.8284C22%2019.6569%2022%2017.7712%2022%2014V11.7979C22%209.16554%2022%207.84935%2021.2305%206.99383C21.1598%206.91514%2021.0849%206.84024%2021.0062%206.76946C20.1506%206%2018.8345%206%2016.2021%206H15.8284C14.6747%206%2014.0979%206%2013.5604%205.84678C13.2651%205.7626%2012.9804%205.64471%2012.7121%205.49543C12.2237%205.22367%2011.8158%204.81578%2011%204L10.4497%203.44975C10.1763%203.17633%2010.0396%203.03961%209.89594%202.92051C9.27652%202.40704%208.51665%202.09229%207.71557%202.01738C7.52976%202%207.33642%202%206.94975%202C6.06722%202%205.62595%202%205.25839%202.06935C3.64031%202.37464%202.37464%203.64031%202.06935%205.25839ZM12.25%2010C12.25%209.58579%2012.5858%209.25%2013%209.25H18C18.4142%209.25%2018.75%209.58579%2018.75%2010C18.75%2010.4142%2018.4142%2010.75%2018%2010.75H13C12.5858%2010.75%2012.25%2010.4142%2012.25%2010Z%22%20fill%3D%22%231C274C%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
 
-/* FILES ____________________________________________________________________ */
+/* #region __________ FILE: UNKNOWN __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title .nav-file-title-content::before {
     display: inline-block;
     content: "";
@@ -1141,28 +1282,36 @@ body:not(.nav-file-indicators) .nav-file .nav-file-title .nav-file-title-content
     background-color: var(--white_text_5);
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22%23000000%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cg%3E%3Cpath%20fill%3D%22none%22%20d%3D%22M0%200h24v24H0z%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M12.414%205H21a1%201%200%200%201%201%201v14a1%201%200%200%201-1%201H3a1%201%200%200%201-1-1V4a1%201%200%200%201%201-1h7.414l2%202zM11%2016v2h2v-2h-2zm-2.433-5.187l1.962.393A1.5%201.5%200%201%201%2012%2013h-1v2h1a3.5%203.5%200%201%200-3.433-4.187z%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* Markdown */
+
+/* #region __________ FILE: MARKDOWN __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title[data-path*=".md"] .nav-file-title-content::before {
     display: inline-block;
     background-color: var(--blue);
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20viewBox%3D%22-3%200%2032%2032%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20xmlns%3Asketch%3D%22http%3A%2F%2Fwww.bohemiancoding.com%2Fsketch%2Fns%22%20fill%3D%22%23000000%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Ctitle%3Etext-document%3C%2Ftitle%3E%3Cdesc%3ECreated%20with%20Sketch%20Beta.%3C%2Fdesc%3E%3Cdefs%3E%3C%2Fdefs%3E%3Cg%20id%3D%22Page-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%20sketch%3Atype%3D%22MSPage%22%3E%3Cg%20id%3D%22Icon-Set-Filled%22%20sketch%3Atype%3D%22MSLayerGroup%22%20transform%3D%22translate(-105.000000%2C%20-101.000000)%22%20fill%3D%22%23000000%22%3E%3Cpath%20d%3D%22M125%2C109%20C123.896%2C109%20123%2C108.104%20123%2C107%20L123%2C103%20L129%2C109%20L125%2C109%20L125%2C109%20Z%20M124%2C119%20L112%2C119%20C111.448%2C119%20111%2C118.553%20111%2C118%20C111%2C117.448%20111.448%2C117%20112%2C117%20L124%2C117%20C124.552%2C117%20125%2C117.448%20125%2C118%20C125%2C118.553%20124.552%2C119%20124%2C119%20L124%2C119%20Z%20M124%2C125%20L112%2C125%20C111.448%2C125%20111%2C124.553%20111%2C124%20C111%2C123.447%20111.448%2C123%20112%2C123%20L124%2C123%20C124.552%2C123%20125%2C123.447%20125%2C124%20C125%2C124.553%20124.552%2C125%20124%2C125%20L124%2C125%20Z%20M123%2C101.028%20C122.872%2C101.028%20109%2C101%20109%2C101%20C106.791%2C101%20105%2C102.791%20105%2C105%20L105%2C129%20C105%2C131.209%20106.791%2C133%20109%2C133%20L127%2C133%20C129.209%2C133%20131%2C131.209%20131%2C129%20L131%2C109%20L123%2C101.028%20L123%2C101.028%20Z%22%20id%3D%22text-document%22%20sketch%3Atype%3D%22MSShapeGroup%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* Python */
+
+/* #region __________ FILE: PYTHON __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title[data-path*=".py"] .nav-file-title-content::before {
     display: inline-block;
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20fill%3D%22%23000000%22%20viewBox%3D%220%200%2032%2032%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Ctitle%3Epython%3C%2Ftitle%3E%3Cpath%20d%3D%22M19.212%2026.447l-0.287%200.412-0.1%200.512%200.1%200.512%200.287%200.412%200.412%200.287%200.512%200.1%200.512-0.1%200.412-0.287%200.287-0.412%200.1-0.512-0.1-0.512-0.287-0.412-0.412-0.287-0.512-0.1-0.512%200.1zM27.297%208.64l0.35%200.075%200.4%200.15%200.437%200.225%200.45%200.337%200.45%200.437%200.437%200.587%200.4%200.737%200.35%200.912%200.262%201.1%200.175%201.3%200.062%201.537-0.075%201.537-0.2%201.3-0.3%201.075-0.4%200.887-0.45%200.712-0.5%200.562-0.525%200.412-0.525%200.3-0.5%200.2-0.45%200.112-0.4%200.062-0.3%200.025-0.2-0.012h-10.272v1.025h7.298l0.012%203.449%200.025%200.45-0.062%200.425-0.137%200.387-0.212%200.362-0.312%200.312-0.387%200.3-0.475%200.25-0.55%200.212-0.637%200.187-0.725%200.162-0.8%200.112-0.887%200.087-0.962%200.050-1.050%200.012-1.587-0.050-1.337-0.175-1.125-0.25-0.912-0.312-0.737-0.375-0.562-0.412-0.425-0.425-0.312-0.425-0.2-0.412-0.125-0.375-0.050-0.312-0.025-0.25%200.012-0.162v-6.673l0.063-0.8%200.162-0.675%200.262-0.575%200.325-0.475%200.375-0.4%200.412-0.3%200.437-0.25%200.437-0.175%200.412-0.125%200.375-0.075%200.325-0.050%200.262-0.025%200.162-0.012h7.298l0.862-0.062%200.737-0.175%200.625-0.262%200.512-0.35%200.412-0.4%200.337-0.437%200.25-0.45%200.187-0.45%200.125-0.437%200.087-0.4%200.050-0.35%200.025-0.262v-3.824h2.612l0.175%200.012zM10.939%203.704l-0.287%200.412-0.1%200.512%200.1%200.512%200.287%200.425%200.412%200.275%200.512%200.112%200.512-0.113%200.412-0.275%200.287-0.425%200.1-0.512-0.1-0.512-0.287-0.412-0.412-0.275-0.512-0.112-0.512%200.112zM18.812%201.229l1.125%200.25%200.912%200.325%200.737%200.375%200.562%200.4%200.425%200.425%200.312%200.425%200.2%200.412%200.125%200.375%200.050%200.325%200.025%200.25-0.012%200.162v6.673l-0.062%200.787-0.162%200.687-0.262%200.575-0.325%200.475-0.375%200.387-0.412%200.312-0.437%200.237-0.437%200.175-0.412%200.125-0.375%200.087-0.325%200.050-0.263%200.025h-7.46l-0.862%200.062-0.737%200.175-0.625%200.275-0.512%200.337-0.412%200.4-0.337%200.437-0.25%200.45-0.187%200.462-0.125%200.437-0.087%200.4-0.050%200.337-0.025%200.262v3.824h-2.787l-0.262-0.037-0.35-0.087-0.4-0.15-0.437-0.225-0.45-0.325-0.45-0.45-0.437-0.575-0.4-0.737-0.35-0.912-0.262-1.1-0.175-1.312-0.062-1.537%200.075-1.524%200.2-1.3%200.3-1.087%200.4-0.887%200.45-0.712%200.5-0.55%200.525-0.412%200.525-0.3%200.5-0.2%200.45-0.125%200.4-0.062%200.3-0.012h0.2l0.075%200.012h10.197v-1.037h-7.298l-0.012-3.436-0.025-0.462%200.062-0.425%200.137-0.387%200.212-0.35%200.312-0.325%200.387-0.287%200.475-0.25%200.55-0.225%200.637-0.187%200.725-0.15%200.8-0.125%200.887-0.075%200.962-0.050%201.050-0.025%201.587%200.063z%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* Blender */
+
+/* #region __________ FILE: BLENDER __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title[data-path*=".blend"] .nav-file-title-content::before {
     display: inline-block;
     background-color: var(--orange-dim);
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20fill%3D%22%23000000%22%20viewBox%3D%220%200%2024%2024%22%20role%3D%22img%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cpath%20d%3D%22M12.51%2013.214c.046-.8.438-1.506%201.03-2.006a3.424%203.424%200%200%201%202.212-.79c.85%200%201.631.3%202.211.79.592.5.983%201.206%201.028%202.005.045.823-.285%201.586-.865%202.153a3.389%203.389%200%200%201-2.374.938%203.393%203.393%200%200%201-2.376-.938c-.58-.567-.91-1.33-.865-2.152M7.35%2014.831c.006.314.106.922.256%201.398a7.372%207.372%200%200%200%201.593%202.757%208.227%208.227%200%200%200%202.787%202.001%208.947%208.947%200%200%200%203.66.76%208.964%208.964%200%200%200%203.657-.772%208.285%208.285%200%200%200%202.785-2.01%207.428%207.428%200%200%200%201.592-2.762%206.964%206.964%200%200%200%20.25-3.074%207.123%207.123%200%200%200-1.016-2.779%207.764%207.764%200%200%200-1.852-2.043h.002L13.566%202.55l-.02-.015c-.492-.378-1.319-.376-1.86.002-.547.382-.609%201.015-.123%201.415l-.001.001%203.126%202.543-9.53.01h-.013c-.788.001-1.545.518-1.695%201.172-.154.665.38%201.217%201.2%201.22V8.9l4.83-.01-8.62%206.617-.034.025c-.813.622-1.075%201.658-.563%202.313.52.667%201.625.668%202.447.004L7.414%2014s-.069.52-.063.831zm12.09%201.741c-.97.988-2.326%201.548-3.795%201.55-1.47.004-2.827-.552-3.797-1.538a4.51%204.51%200%200%201-1.036-1.622%204.282%204.282%200%200%201%20.282-3.519%204.702%204.702%200%200%201%201.153-1.371c.942-.768%202.141-1.183%203.396-1.185%201.256-.002%202.455.41%203.398%201.175.48.391.87.854%201.152%201.367a4.28%204.28%200%200%201%20.522%201.706%204.236%204.236%200%200%201-.239%201.811%204.54%204.54%200%200%201-1.035%201.626%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* Images */
+
+/* #region __________ FILE: IMAGES __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     [data-path*=".jpg"],
     [data-path*=".png"],
@@ -1175,8 +1324,10 @@ body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     background-color: var(--red-dim);
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M6.205%203h11.59c1.114%200%201.519.116%201.926.334.407.218.727.538.945.945.218.407.334.811.334%201.926v7.51l-4.391-4.053a1.5%201.5%200%200%200-2.265.27l-3.13%204.695-2.303-1.48a1.5%201.5%200%200%200-1.96.298L3.005%2018.15A12.98%2012.98%200%200%201%203%2017.795V6.205c0-1.115.116-1.519.334-1.926.218-.407.538-.727.945-.945C4.686%203.116%205.09%203%206.205%203zm9.477%208.53L21%2016.437v1.357c0%201.114-.116%201.519-.334%201.926a2.272%202.272%200%200%201-.945.945c-.407.218-.811.334-1.926.334H6.205c-1.115%200-1.519-.116-1.926-.334a2.305%202.305%200%200%201-.485-.345L8.2%2015.067l2.346%201.508a1.5%201.5%200%200%200%202.059-.43l3.077-4.616zM7.988%206C6.878%206%206%206.832%206%207.988%206%209.145%206.879%2010%207.988%2010%209.121%2010%2010%209.145%2010%207.988%2010%206.832%209.121%206%207.988%206z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* Videos */
+
+/* #region __________ FILE: VIDEOS __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     [data-path*=".mp4"],
     [data-path*=".avi"],
@@ -1186,8 +1337,10 @@ body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     background-color: var(--red-dim);
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20fill%3D%22%23000000%22%20version%3D%221.1%22%20id%3D%22Capa_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20viewBox%3D%220%200%2028.666%2028.666%22%20xml%3Aspace%3D%22preserve%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cg%3E%3Cpath%20d%3D%22M14.333%2C0C6.417%2C0%2C0%2C6.417%2C0%2C14.333s6.417%2C14.333%2C14.333%2C14.333s14.333-6.417%2C14.333-14.333S22.249%2C0%2C14.333%2C0z%20M14.334%2C3.5c2.047%2C0%2C3.707%2C1.66%2C3.707%2C3.708s-1.66%2C3.709-3.707%2C3.709c-2.048%2C0-3.709-1.661-3.709-3.709S12.286%2C3.499%2C14.334%2C3.5z%20M7.209%2C18.041c-2.049%2C0-3.709-1.66-3.709-3.707c0-2.048%2C1.66-3.709%2C3.709-3.709c2.047%2C0%2C3.708%2C1.661%2C3.708%2C3.709%20C10.917%2C16.38%2C9.256%2C18.041%2C7.209%2C18.041z%20M14.334%2C25.166c-2.048%2C0-3.709-1.66-3.709-3.709c0-2.047%2C1.661-3.708%2C3.709-3.708%20c2.047%2C0%2C3.707%2C1.661%2C3.707%2C3.708C18.041%2C23.505%2C16.381%2C25.166%2C14.334%2C25.166z%20M21.458%2C18.041c-2.049%2C0-3.709-1.66-3.709-3.707%20c0-2.048%2C1.66-3.709%2C3.709-3.709c2.048%2C0%2C3.709%2C1.661%2C3.708%2C3.709C25.166%2C16.38%2C23.506%2C18.041%2C21.458%2C18.041z%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* Audio */
+
+/* #region __________ FILE: AUDIO __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     [data-path*=".mp3"]
 ) .nav-file-title-content::before {
@@ -1195,16 +1348,20 @@ body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     background-color: var(--red-dim);
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cpath%20d%3D%22M13%203.7446C13%203.27314%2012.8728%202.50021%2012.1657%202.14424C11.4151%201.76635%2010.7163%202.19354%2010.3623%202.51158L4.94661%207.43717H3C1.89543%207.43717%201%208.3326%201%209.43717L1.00001%2014.6248C1.00001%2015.7293%201.89544%2016.6248%203.00001%2016.6248H4.95001L10.3623%2021.4891C10.7175%2021.8081%2011.416%2022.2331%2012.1656%2021.8554C12.8717%2021.4998%2013%2020.7286%2013%2020.2561V3.7446Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M17.336%203.79605L17.0952%203.72886C16.5633%203.58042%2016.0117%203.89132%2015.8632%204.42329L15.7289%204.90489C15.5804%205.43685%2015.8913%205.98843%2016.4233%206.13687L16.6641%206.20406C18.9551%206.84336%2020.7501%209.14615%2020.7501%2012.0001C20.7501%2014.854%2018.9551%2017.1568%2016.6641%2017.7961L16.4233%2017.8632C15.8913%2018.0117%2015.5804%2018.5633%2015.7289%2019.0952L15.8632%2019.5768C16.0117%2020.1088%2016.5633%2020.4197%2017.0952%2020.2713L17.336%2020.2041C20.7957%2019.2387%2023.2501%2015.8818%2023.2501%2012.0001C23.2501%208.11832%2020.7957%204.76146%2017.336%203.79605Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M16.3581%207.80239L16.1185%207.73078C15.5894%207.57258%2015.0322%207.87329%2014.874%208.40243L14.7308%208.88148C14.5726%209.41062%2014.8733%209.96782%2015.4024%2010.126L15.642%2010.1976C16.1752%2010.3571%2016.75%2011.012%2016.75%2012C16.75%2012.9881%2016.1752%2013.643%2015.642%2013.8024L15.4024%2013.874C14.8733%2014.0322%2014.5726%2014.5894%2014.7308%2015.1185L14.874%2015.5976C15.0322%2016.1267%2015.5894%2016.4274%2016.1185%2016.2692L16.3581%2016.1976C18.1251%2015.6693%2019.25%2013.8987%2019.25%2012C19.25%2010.1014%2018.1251%208.33068%2016.3581%207.80239Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* PDF */
+
+/* #region __________ FILE: PDF __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     [data-path*=".pdf"]
 ) .nav-file-title-content::before {
     display: inline-block;
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20fill%3D%22%23000000%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2052%2052%22%20enable-background%3D%22new%200%200%2052%2052%22%20xml%3Aspace%3D%22preserve%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cg%3E%3Cpath%20d%3D%22M9.7%2C36.1V11.3c-2.6%2C0-4.7%2C2.1-4.7%2C4.6v29.4C5%2C47.9%2C7.1%2C50%2C9.7%2C50H33c2.6%2C0%2C4.7-2.1%2C4.7-4.6H19%20C13.9%2C45.4%2C9.7%2C45.4%2C9.7%2C36.1z%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M45.4%2C15.9h-7.8c-2.6%2C0-4.7-2.1-4.7-4.6V3.5C33%2C2.7%2C32.3%2C2%2C31.4%2C2H19c-2.6%2C0-4.7%2C2.1-4.7%2C4.6v29.4%20c0%2C2.6%2C2.1%2C4.6%2C4.7%2C4.6h23.3c2.6%2C0%2C4.7-2.1%2C4.7-4.6V17.5C47%2C16.6%2C46.3%2C15.9%2C45.4%2C15.9z%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M46.7%2C9.4l-7.2-7.1C39.3%2C2.1%2C39.1%2C2%2C38.8%2C2l0%2C0c-0.6%2C0-1.1%2C0.5-1.1%2C1.1v5.1c0%2C1.7%2C1.4%2C3.1%2C3.1%2C3.1h5.1%20c0.6%2C0%2C1.1-0.5%2C1.1-1.1l0%2C0C47%2C9.9%2C46.9%2C9.7%2C46.7%2C9.4z%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* Vector */
+
+/* #region __________ FILE: VECTOR __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     [data-path*=".svg"],
     [data-path*=".ai"],
@@ -1215,8 +1372,10 @@ body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     background-color: var(--red-dim);
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cpath%20d%3D%22M11%200L16%205L14%207V12L3%2016L2.20711%2015.2071L6.48196%2010.9323C6.64718%2010.9764%206.82084%2011%207%2011C8.10457%2011%209%2010.1046%209%209C9%207.89543%208.10457%207%207%207C5.89543%207%205%207.89543%205%209C5%209.17916%205.02356%209.35282%205.06774%209.51804L0.792893%2013.7929L0%2013L4%202H9L11%200Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* JSON */
+
+/* #region __________ FILE: MARKUP __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     [data-path*=".json"],
     [data-path*=".toml"],
@@ -1228,8 +1387,10 @@ body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     background-color: var(--green-dim);
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20fill%3D%22%23000000%22%20viewBox%3D%220%200%20256%20256%22%20id%3D%22Flat%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20stroke%3D%22%23000000%22%20stroke-width%3D%2225.6%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cpath%20d%3D%22M52%2C52V204H80a12%2C12%2C0%2C0%2C1%2C0%2C24H40a12.00028%2C12.00028%2C0%2C0%2C1-12-12V40A12.00028%2C12.00028%2C0%2C0%2C1%2C40%2C28H80a12%2C12%2C0%2C0%2C1%2C0%2C24ZM216%2C28H176a12%2C12%2C0%2C0%2C0%2C0%2C24h28V204H176a12%2C12%2C0%2C0%2C0%2C0%2C24h40a12.00028%2C12.00028%2C0%2C0%2C0%2C12-12V40A12.00028%2C12.00028%2C0%2C0%2C0%2C216%2C28Z%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* 3D */
+
+/* #region __________ FILE: 3D __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     [data-path*=".fbx"],
     [data-path*=".obj"],
@@ -1242,8 +1403,10 @@ body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     display: inline-block;
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20fill%3D%22%23000000%22%20viewBox%3D%220%200%2056%2056%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cpath%20d%3D%22M%2028.0000%2026.6406%20L%2050.0783%2014.1016%20C%2049.7264%2013.75%2049.3045%2013.4688%2048.7890%2013.1875%20L%2032.2657%203.7657%20C%2030.8126%202.9453%2029.4063%202.5000%2028.0000%202.5000%20C%2026.5938%202.5000%2025.1875%202.9453%2023.7344%203.7657%20L%207.2110%2013.1875%20C%206.6954%2013.4688%206.2735%2013.75%205.9219%2014.1016%20Z%20M%2026.4063%2053.5%20L%2026.4063%2029.4532%20L%204.3985%2016.8906%20C%204.2813%2017.4063%204.2110%2017.9688%204.2110%2018.6719%20L%204.2110%2036.9297%20C%204.2110%2040.3281%205.4063%2041.5938%207.5860%2042.8360%20L%2025.9375%2053.2891%20C%2026.1016%2053.3828%2026.2422%2053.4532%2026.4063%2053.5%20Z%20M%2029.5938%2053.5%20C%2029.7579%2053.4532%2029.8985%2053.3828%2030.0626%2053.2891%20L%2048.4141%2042.8360%20C%2050.5938%2041.5938%2051.7890%2040.3281%2051.7890%2036.9297%20L%2051.7890%2018.6719%20C%2051.7890%2017.9688%2051.7189%2017.4063%2051.6018%2016.8906%20L%2029.5938%2029.4532%20Z%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* Screenplay */
+
+/* #region __________ FILE: SCREENPLAY __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     [data-path*=".fountain"]
 ) .nav-file-title-content::before {
@@ -1251,22 +1414,28 @@ body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     background-color: var(--blue);
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cpath%20d%3D%22M10.063%2021.7917C10.3894%2022.1483%2011%2021.9534%2011%2021.4699V4C10%203%208.91255%202.57151%207.78361%202.32246C5.78311%201.88113%204.0024%201.97693%202.91265%202.11876C1.70543%202.27587%201%203.34931%201%204.40561V17.5662C1%2018.9895%202.18834%2020.1115%203.56807%2020.066C4.71011%2020.0284%206.2952%2020.0688%207.73105%2020.4158C8.82596%2020.6803%209.52237%2021.2009%2010.063%2021.7917Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M13.937%2021.7917C13.6106%2022.1483%2013%2021.9534%2013%2021.4699V4C14%203%2015.0874%202.57151%2016.2164%202.32246C18.2169%201.88113%2019.9976%201.97693%2021.0873%202.11876C22.2946%202.27587%2023%203.34931%2023%204.40561V17.5662C23%2018.9895%2021.8117%2020.1115%2020.4319%2020.066C19.2899%2020.0284%2017.7048%2020.0688%2016.269%2020.4158C15.174%2020.6803%2014.4776%2021.2009%2013.937%2021.7917Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* Plaintext */
+
+/* #region __________ FILE: PLAINTEXT __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     [data-path*=".txt"]
 ) .nav-file-title-content::before {
     display: inline-block;
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20viewBox%3D%22-1%20-1%2022.00%2022.00%22%20id%3D%22meteor-icon-kit__solid-align-justify%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M0%201.5C0%200.67157%200.67157%200%201.5%200H18.5C19.3284%200%2020%200.67157%2020%201.5C20%202.32843%2019.3284%203%2018.5%203H1.5C0.67157%203%200%202.32843%200%201.5zM0%206.5C0%205.67157%200.67157%205%201.5%205H18.5C19.3284%205%2020%205.67157%2020%206.5C20%207.3284%2019.3284%208%2018.5%208H1.5C0.67157%208%200%207.3284%200%206.5zM0%2011.5C0%2010.6716%200.67157%2010%201.5%2010H18.5C19.3284%2010%2020%2010.6716%2020%2011.5C20%2012.3284%2019.3284%2013%2018.5%2013H1.5C0.67157%2013%200%2012.3284%200%2011.5zM0%2016.5C0%2015.6716%200.67157%2015%201.5%2015H18.5C19.3284%2015%2020%2015.6716%2020%2016.5C20%2017.3284%2019.3284%2018%2018.5%2018H1.5C0.67157%2018%200%2017.3284%200%2016.5z%22%20fill%3D%22%23758CA3%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* Canvas */
+
+/* #region __________ FILE: CANVAS __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title[data-path*=".canvas"] .nav-file-title-content::before {
     display: inline-block;
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20fill%3D%22%23000000%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke%3D%22%23CCCCCC%22%20stroke-width%3D%220.144%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Ctitle%3Egrid_2_fill%3C%2Ftitle%3E%3Cg%20id%3D%22%E9%A1%B5%E9%9D%A2-1%22%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20id%3D%22System%22%20transform%3D%22translate(-768.000000%2C%20-144.000000)%22%3E%3Cg%20id%3D%22grid_2_fill%22%20transform%3D%22translate(768.000000%2C%20144.000000)%22%3E%3Cpath%20d%3D%22M24%2C0%20L24%2C24%20L0%2C24%20L0%2C0%20L24%2C0%20Z%20M12.5934901%2C23.257841%20L12.5819402%2C23.2595131%20L12.5108777%2C23.2950439%20L12.4918791%2C23.2987469%20L12.4918791%2C23.2987469%20L12.4767152%2C23.2950439%20L12.4056548%2C23.2595131%20C12.3958229%2C23.2563662%2012.3870493%2C23.2590235%2012.3821421%2C23.2649074%20L12.3780323%2C23.275831%20L12.360941%2C23.7031097%20L12.3658947%2C23.7234994%20L12.3769048%2C23.7357139%20L12.4804777%2C23.8096931%20L12.4953491%2C23.8136134%20L12.4953491%2C23.8136134%20L12.5071152%2C23.8096931%20L12.6106902%2C23.7357139%20L12.6232938%2C23.7196733%20L12.6232938%2C23.7196733%20L12.6266527%2C23.7031097%20L12.609561%2C23.275831%20C12.6075724%2C23.2657013%2012.6010112%2C23.2592993%2012.5934901%2C23.257841%20L12.5934901%2C23.257841%20Z%20M12.8583906%2C23.1452862%20L12.8445485%2C23.1473072%20L12.6598443%2C23.2396597%20L12.6498822%2C23.2499052%20L12.6498822%2C23.2499052%20L12.6471943%2C23.2611114%20L12.6650943%2C23.6906389%20L12.6699349%2C23.7034178%20L12.6699349%2C23.7034178%20L12.678386%2C23.7104931%20L12.8793402%2C23.8032389%20C12.8914285%2C23.8068999%2012.9022333%2C23.8029875%2012.9078286%2C23.7952264%20L12.9118235%2C23.7811639%20L12.8776777%2C23.1665331%20C12.8752882%2C23.1545897%2012.8674102%2C23.1470016%2012.8583906%2C23.1452862%20L12.8583906%2C23.1452862%20Z%20M12.1430473%2C23.1473072%20C12.1332178%2C23.1423925%2012.1221763%2C23.1452606%2012.1156365%2C23.1525954%20L12.1099173%2C23.1665331%20L12.0757714%2C23.7811639%20C12.0751323%2C23.7926639%2012.0828099%2C23.8018602%2012.0926481%2C23.8045676%20L12.108256%2C23.8032389%20L12.3092106%2C23.7104931%20L12.3186497%2C23.7024347%20L12.3186497%2C23.7024347%20L12.3225043%2C23.6906389%20L12.340401%2C23.2611114%20L12.337245%2C23.2485176%20L12.337245%2C23.2485176%20L12.3277531%2C23.2396597%20L12.1430473%2C23.1473072%20Z%22%20id%3D%22MingCute%22%20fill-rule%3D%22nonzero%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M19%2C11%20C20.0543909%2C11%2020.9181678%2C11.81585%2020.9945144%2C12.8507339%20L21%2C13%20L21%2C19%20C21%2C20.0543909%2020.18415%2C20.9181678%2019.1492661%2C20.9945144%20L19%2C21%20L15%2C21%20C13.9456091%2C21%2013.0818322%2C20.18415%2013.0054856%2C19.1492661%20L13%2C19%20L13%2C13%20C13%2C11.9456091%2013.81585%2C11.0818322%2014.8507339%2C11.0054856%20L15%2C11%20L19%2C11%20Z%20M9%2C15%20C10.1046%2C15%2011%2C15.8954%2011%2C17%20L11%2C19%20C11%2C20.1046%2010.1046%2C21%209%2C21%20L5%2C21%20C3.89543%2C21%203%2C20.1046%203%2C19%20L3%2C17%20C3%2C15.8954%203.89543%2C15%205%2C15%20L9%2C15%20Z%20M9%2C3%20C10.1046%2C3%2011%2C3.89543%2011%2C5%20L11%2C11%20C11%2C12.1046%2010.1046%2C13%209%2C13%20L5%2C13%20C3.89543%2C13%203%2C12.1046%203%2C11%20L3%2C5%20C3%2C3.89543%203.89543%2C3%205%2C3%20L9%2C3%20Z%20M19%2C3%20C20.1046%2C3%2021%2C3.89543%2021%2C5%20L21%2C7%20C21%2C8.10457%2020.1046%2C9%2019%2C9%20L15%2C9%20C13.8954%2C9%2013%2C8.10457%2013%2C7%20L13%2C5%20C13%2C3.89543%2013.8954%2C3%2015%2C3%20L19%2C3%20Z%22%20id%3D%22%E5%BD%A2%E7%8A%B6%22%20fill%3D%22%2309244B%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* Spreadsheet */
+
+/* #region __________ FILE: SPREADSHEET __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     [data-path*=".xlsx"],
     [data-path*=".ods"]
@@ -1275,8 +1444,10 @@ body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     background-color: var(--green-dim);
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20fill%3D%22%23000000%22%20viewBox%3D%220%200%20512%20512%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Ctitle%3Eionicons-v5-i%3C%2Ftitle%3E%3Cpath%20d%3D%22M204%2C240H68a36%2C36%2C0%2C0%2C1-36-36V68A36%2C36%2C0%2C0%2C1%2C68%2C32H204a36%2C36%2C0%2C0%2C1%2C36%2C36V204A36%2C36%2C0%2C0%2C1%2C204%2C240Z%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M444%2C240H308a36%2C36%2C0%2C0%2C1-36-36V68a36%2C36%2C0%2C0%2C1%2C36-36H444a36%2C36%2C0%2C0%2C1%2C36%2C36V204A36%2C36%2C0%2C0%2C1%2C444%2C240Z%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M204%2C480H68a36%2C36%2C0%2C0%2C1-36-36V308a36%2C36%2C0%2C0%2C1%2C36-36H204a36%2C36%2C0%2C0%2C1%2C36%2C36V444A36%2C36%2C0%2C0%2C1%2C204%2C480Z%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M444%2C480H308a36%2C36%2C0%2C0%2C1-36-36V308a36%2C36%2C0%2C0%2C1%2C36-36H444a36%2C36%2C0%2C0%2C1%2C36%2C36V444A36%2C36%2C0%2C0%2C1%2C444%2C480Z%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* Text */
+
+/* #region __________ FILE: TEXT __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     [data-path*=".docx"],
     [data-path*=".odt"],
@@ -1286,8 +1457,10 @@ body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     background-color: var(--blue);
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20viewBox%3D%222%200%2020%2020%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cpath%20d%3D%22M8%204V20M17%2012V20M6%2020H10M15%2020H19M13%207V4H3V7M21%2014V12H13V14%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222.6%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* Presentation */
+
+/* #region __________ FILE: PRESENTATION __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     [data-path*=".pptx"],
     [data-path*=".odp"]
@@ -1296,8 +1469,10 @@ body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     background-color: var(--orange-dim);
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cpath%20d%3D%22M12%201C11.7348%201%2011.4804%201.10536%2011.2929%201.29289C11.1054%201.48043%2011%201.73478%2011%202V12C11%2012.5523%2011.4477%2013%2012%2013H22C22.5523%2013%2023%2012.5523%2023%2012C23%2010.5555%2022.7155%209.12506%2022.1627%207.79048C21.6099%206.4559%2020.7996%205.24327%2019.7782%204.22183C18.7567%203.20038%2017.5441%202.39013%2016.2095%201.83733C14.8749%201.28452%2013.4445%201%2012%201Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M9%204.51209C9%204.18747%208.84243%203.88305%208.57739%203.69562C8.31235%203.50819%207.97282%203.46107%207.66675%203.56925C3.78413%204.94156%201%208.64435%201%2013C1%2018.5228%205.47715%2023%2011%2023C15.3556%2023%2019.0584%2020.2158%2020.4307%2016.3332C20.5389%2016.0272%2020.4918%2015.6876%2020.3044%2015.4226C20.1169%2015.1575%2019.8125%2015%2019.4879%2015H11C9.89543%2015%209%2014.1045%209%2013V4.51209Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* Data */
+
+/* #region __________ FILE: DATA __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     [data-path*=".csv"],
     [data-path*=".sql"],
@@ -1309,8 +1484,10 @@ body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     background-color: var(--green-dim);
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2016%2016%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20class%3D%22si-glyph%20si-glyph-database%22%20fill%3D%22%23000000%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Ctitle%3E645%3C%2Ftitle%3E%3Cdefs%3E%3C%2Fdefs%3E%3Cg%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20transform%3D%22translate(1.000000%2C%200.000000)%22%20fill%3D%22%23434343%22%3E%3Cellipse%20cx%3D%226.43%22%20cy%3D%222.421%22%20rx%3D%226.43%22%20ry%3D%222.421%22%20class%3D%22si-glyph-fill%22%3E%3C%2Fellipse%3E%3Cpath%20d%3D%22M6.463%2C11.08%20C2.947%2C11.08%200.016%2C10.1%200.016%2C9.444%20L0.016%2C12.713%20C0.016%2C13.901%202.903%2C14.859%206.463%2C14.859%20C10.023%2C14.859%2012.91%2C13.9%2012.91%2C12.713%20L12.91%2C9.444%20C12.91%2C10.1%209.979%2C11.08%206.463%2C11.08%20L6.463%2C11.08%20Z%22%20class%3D%22si-glyph-fill%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M6.494%2C6.051%20C2.978%2C6.051%200.047%2C5.049%200.047%2C4.377%20L0.047%2C7.723%20C0.047%2C8.937%202.934%2C9.919%206.494%2C9.919%20C10.054%2C9.919%2012.941%2C8.937%2012.941%2C7.723%20L12.941%2C4.377%20C12.941%2C5.049%2010.01%2C6.051%206.494%2C6.051%20L6.494%2C6.051%20Z%22%20class%3D%22si-glyph-fill%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* Painting */
+
+/* #region __________ FILE: PAINTING __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     [data-path*=".kra"],
     [data-path*=".psd"],
@@ -1320,8 +1497,10 @@ body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     background-color: var(--red-dim);
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20fill%3D%22%23000000%22%20viewBox%3D%22-64%200%20512%20512%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cpath%20d%3D%22M352%200H32C14.33%200%200%2014.33%200%2032v224h384V32c0-17.67-14.33-32-32-32zM0%20320c0%2035.35%2028.66%2064%2064%2064h64v64c0%2035.35%2028.66%2064%2064%2064s64-28.65%2064-64v-64h64c35.34%200%2064-28.65%2064-64v-32H0v32zm192%20104c13.25%200%2024%2010.74%2024%2024%200%2013.25-10.75%2024-24%2024s-24-10.75-24-24c0-13.26%2010.75-24%2024-24z%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
 
-/* Archive */
+
+/* #region __________ FILE: ARCHIVE __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     [data-path*=".zip"],
     [data-path*=".rar"],
@@ -1331,3 +1510,5 @@ body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     background-color: var(--orange-dim);
     -webkit-mask: url("data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M4.17157%203.17157C3%204.34315%203%206.22876%203%2010V14C3%2017.7712%203%2019.6569%204.17157%2020.8284C5.34315%2022%207.22876%2022%2011%2022H13C16.7712%2022%2018.6569%2022%2019.8284%2020.8284C21%2019.6569%2021%2017.7712%2021%2014V10C21%206.22876%2021%204.34315%2019.8284%203.17157C18.6569%202%2016.7712%202%2013%202H12V3V4H13.5C13.9714%204%2014.2071%204%2014.3536%204.14645C14.5%204.29289%2014.5%204.5286%2014.5%205C14.5%205.4714%2014.5%205.70711%2014.3536%205.85355C14.2071%206%2013.9714%206%2013.5%206H12V8H13.5C13.9714%208%2014.2071%208%2014.3536%208.14645C14.5%208.29289%2014.5%208.5286%2014.5%209C14.5%209.4714%2014.5%209.70711%2014.3536%209.85355C14.2071%2010%2013.9714%2010%2013.5%2010H13C12.5286%2010%2012.2929%2010%2012.1464%209.85355C12%209.70711%2012%209.4714%2012%209V8H10.5C10.0286%208%209.79289%208%209.64645%207.85355C9.5%207.70711%209.5%207.4714%209.5%207C9.5%206.5286%209.5%206.29289%209.64645%206.14645C9.79289%206%2010.0286%206%2010.5%206H12V4H10.5C10.0286%204%209.79289%204%209.64645%203.85355C9.5%203.70711%209.5%203.4714%209.5%203V2.00338C6.70613%202.02377%205.17628%202.16686%204.17157%203.17157ZM9.5%2012.875V13C9.5%2014.3807%2010.6193%2015.5%2012%2015.5C13.3807%2015.5%2014.5%2014.3807%2014.5%2013V12.875C14.5%2012.3918%2014.1082%2012%2013.625%2012H10.375C9.89175%2012%209.5%2012.3918%209.5%2012.875Z%22%20fill%3D%22%231C274C%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat;
 }
+/* #endregion */
+/* #endregion */
