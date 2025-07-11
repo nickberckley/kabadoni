@@ -525,14 +525,13 @@ input[type='datetime-local'],
 .document-search-input:before {
     background-color: var(--viewer-text-muted);
 }
-/* #endregion */
 
 
-
-/* Reading View */
-.markdown-preview-view {
-    padding-left: 6.2%;
+/* Reading mode */
+.markdown-preview-view.markdown-rendered .markdown-preview-section {
+    padding-left: 4%;
 }
+/* #endregion */
 
 
 
