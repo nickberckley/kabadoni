@@ -170,12 +170,16 @@ body {
 /* #region __________ HEADER __________ */
 .workspace-ribbon .sidebar-toggle-button,
 body .workspace-tabs.mod-top,
-body.is-focused .workspace-tabs.mod-top {
+body.is-focused .workspace-tabs.mod-top,
+.titlebar-button-container {
     --tab-container-background: var(--dark_bg_4);
-    background-color: var(--dark_bg_4);
+    background-color: var(--dark_bg_4) !important;
 }
 .workspace .mod-root .workspace-tab-header-inner::after {
     background-color: var(--dark_bg_6);
+}
+.is-frameless:not(.is-hidden-frameless).obsidian-app.show-inline-title .titlebar-inner {
+    background-color: var(--dark_bg_4) !important;
 }
 
 /* Tabs */
@@ -220,8 +224,8 @@ body.is-focused .workspace-tabs.mod-top {
     background-color: var(--dark_bg_1);
 }
 .search-result-file-matched-text {
-    padding: 1px 2px;
-    border-radius: 3px;
+    padding: 0px 1px;
+    border-radius: 2px;
     background-color: var(--yellow-dim);
     color: var(--black_text_1);
     font-weight: 600;
