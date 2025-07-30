@@ -234,10 +234,10 @@ body.is-focused .workspace-tabs.mod-top,
 
 
 /* Status Bar */
-.status-bar {
+/* .status-bar {
     background-color: var(--dark_bg_4);
     margin-right: 301px;
-}
+} */
 
 /* Ribbon */
 .workspace-ribbon.side-dock-ribbon.mod-left {
