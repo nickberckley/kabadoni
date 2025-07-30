@@ -383,6 +383,7 @@ input[type='datetime-local'],
 
 /* Keymaps */
 .suggestion-hotkey,
+.command-type-badge,
 .setting-hotkey {
     color: var(--white_text_2);
     background-color: var(--dark_bg_5);
@@ -795,6 +796,54 @@ input.kanban-plugin__filter-input {
 /* #endregion */
 /* #endregion */
 
+
+/* #region ____________________ PLUGINS ____________________ */
+
+/* #region __________ EDITING TOOLBAR __________ */
+.editingToolbarDefaultAesthetic,
+.editingToolbarDefaultAesthetic .subitem {
+    background-color: var(--viewer-secondary) !important;
+}
+.editingToolbarDefaultAesthetic .x-color-picker-wrapper {
+    background-color: var(--viewer-secondary) !important;
+}
+.editingToolbarDefaultAesthetic .x-color-picker-wrapper .x-color-picker table,
+.editingToolbarDefaultAesthetic .x-color-picker-wrapper .x-color-picker table th,
+.editingToolbarDefaultAesthetic .x-color-picker-wrapper .x-color-picker table tr,
+.editingToolbarDefaultAesthetic .x-color-picker-wrapper .x-color-picker table td {
+    border-color: var(--viewer-secondary) !important;
+    color: var(--color-accent) !important;
+    font-weight: 300 !important;
+}
+
+.editingToolbarDefaultAesthetic button {
+    color: var(--viewer-text-muted);
+}
+.editingToolbarDefaultAesthetic button:hover {
+    color: var(--white_text_1);
+}
+
+/* Preferences */
+.editing-toolbar-tab:hover {
+    background-color: var(--viewer-tetriary);
+}
+
+.editing-toolbar-content .generalSetting-container,
+.editing-toolbar-content .appearanceSetting-container,
+.editing-toolbar-content .custom-paintbrush-container,
+.editing-toolbar-content .custom-toolbar-container,
+.editing-toolbar-content .add-command-button-container,
+.editing-toolbar-content .command-list-container,
+.editing-toolbar-content .commandSetting-container,
+.editing-toolbar-content .commandSetting-container .command-buttons-container,
+.editing-toolbar-content .import-export-container,
+.editing-toolbar-content .import-export-info {
+    background-color: var(--viewer-secondary) !important;
+}
+
+/* #endregion */
+
+/* #endregion */
 
 
 /* #region ____________________ CALLOUTS ____________________ */
