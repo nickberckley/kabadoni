@@ -368,6 +368,22 @@ input[type=checkbox]:checked:hover {
     background-color: var(--color-accent);
     color: var(--white_text_2);
 }
+/* Unlinked mentions buttons */
+.search-result-file-match-destination-file svg {
+    color: var(--white_text_4);
+}
+.search-result-file-match-destination-file,
+.search-result-file-match-replace-button {
+    background-color: var(--dark_bg_3) !important;
+    color: var(--white_text_3);
+}
+.search-result-file-match:hover .search-result-file-match-destination-file {
+    background-color: var(--dark_bg_3);
+}
+.search-result-file-match-replace-button:hover,
+.search-result-file-match-destination-file:hover {
+    background-color: var(--dark_bg_6) !important;
+}
 
 
 /* File properties */
