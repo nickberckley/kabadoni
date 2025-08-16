@@ -288,7 +288,7 @@ input.prompt-input:focus-visible {
 .prompt .suggestion-item {
     position: relative;
 }
-.prompt .suggestion-prefix.suggestion-prefix{
+.prompt .suggestion-prefix.suggestion-prefix {
     color: var(--white_text_2);
     background-color: var(--dark_bg_4);
     border-radius: 5px;
@@ -498,6 +498,12 @@ input[type='datetime-local'],
 /* Highlight */
 .markdown-rendered mark {
     border-radius: 5px !important;
+}
+
+
+/* Search highlights */
+.obsidian-search-match-highlight {
+    background-color: var(--text-highlight-bg);
 }
 
 
