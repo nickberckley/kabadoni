@@ -13,8 +13,8 @@
     --light_bg_3: #d2c6bc;
     --light_bg_4: #b9aea5;
 
-    --white_text_1: #E6E6E6; /* Active, highlighted, bold, heading text & elements */
-    --white_text_2: #eaeaea; /* Main reading text */
+    --white_text_1: #e6e6e6; /* Active, highlighted, bold, heading text & elements */
+    --white_text_2: #dedede; /* Main reading text */
     --white_text_3: #c9c9c9; /* Muted, secondary text */
     --white_text_4: #a3a3a3; /* Inactive text & UI elements */
     --white_text_5: #848484; /* Greyed out text & UI elements */
@@ -53,7 +53,7 @@ body {
     /* Text Colors */
     --text-normal:                   var(--white_text_2);
     --text-muted:                    var(--white_text_3);
-    --text-faint:                    var(--white_text_6);
+    --text-faint:                    var(--white_text_5);
     --bold-color:                    var(--white_text_1);
     --italic-color:                  var(--white_text_2);
     /* #endregion */
@@ -172,14 +172,14 @@ body {
 body .workspace-tabs.mod-top,
 body.is-focused .workspace-tabs.mod-top,
 .titlebar-button-container {
-    --tab-container-background: var(--dark_bg_4);
-    background-color: var(--dark_bg_4) !important;
+    --tab-container-background: var(--dark_bg_3);
+    background-color: var(--dark_bg_3) !important;
 }
 .workspace .mod-root .workspace-tab-header-inner::after {
     background-color: var(--dark_bg_6);
 }
 .is-frameless:not(.is-hidden-frameless).obsidian-app.show-inline-title .titlebar-inner {
-    background-color: var(--dark_bg_4) !important;
+    background-color: var(--dark_bg_3) !important;
 }
 
 /* Tabs */
@@ -241,7 +241,7 @@ body.is-focused .workspace-tabs.mod-top,
 
 /* Ribbon */
 .workspace-ribbon.side-dock-ribbon.mod-left {
-    background-color: var(--dark_bg_3);
+    background-color: var(--dark_bg_2);
 }
 /* #endregion */
 
