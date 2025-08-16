@@ -26,6 +26,7 @@
 
     --blue: #586f86;
     --yellow: #f0c674;
+    --yellow-mid: #d8ae5b;
     --yellow-dim: #b29143;
     --orange: #e87d0d;
     --orange-dim: #a87a4f;
@@ -56,6 +57,7 @@ body {
     --text-faint:                    var(--white_text_5);
     --bold-color:                    var(--white_text_1);
     --italic-color:                  var(--white_text_2);
+    --bold-modifier:                 300;
     /* #endregion */
 
 
@@ -417,7 +419,7 @@ input[type='datetime-local'],
 
 /* Suggestion highlights */
 .suggestion-highlight{
-    color: var(--yellow);
+    color: var(--yellow-mid);
 }
 
 
@@ -813,6 +815,7 @@ input.kanban-plugin__filter-input {
 /* #endregion */
 
 
+
 /* #region ____________________ PLUGINS ____________________ */
 
 /* #region __________ EDITING TOOLBAR __________ */
@@ -860,6 +863,7 @@ input.kanban-plugin__filter-input {
 /* #endregion */
 
 /* #endregion */
+
 
 
 /* #region ____________________ CALLOUTS ____________________ */
