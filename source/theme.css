@@ -258,8 +258,8 @@ body.is-focused .workspace-tabs.mod-top,
 
 /* Suggestions (this window is shared by many pop-ups, including tag suggestions, file property suggestions, font picker, etc.) */
 .suggestion {
-    background-color: var(--background-primary);
-    color: var(--color-accent);
+    background-color: var(--dark_bg_2) !important;
+    color: var(--white_text_2);
     --text-muted: var(--white_text_3);
 }
 .suggestion-item.is-selected {
@@ -350,6 +350,9 @@ input[type=checkbox]:checked:hover {
 .search-input-container input {
     background-color: var(--dark_bg_3);
 }
+.search-input-container input:hover {
+    background-color: var(--dark_bg_4);
+}
 
 
 /* Expanded toggles */
@@ -367,7 +370,7 @@ input[type=checkbox]:checked:hover {
 
 /* Operator buttons */
 .text-icon-button:hover {
-    background-color: var(--color-accent);
+    background-color: var(--color-accent) !important;
     color: var(--white_text_2);
 }
 /* Unlinked mentions buttons */
@@ -572,6 +575,7 @@ input[type='datetime-local'],
 .community-modal-details, /* Plugin & theme pages */
 .view-header, /* Viewing areas header (top row buttons) */
 .graph-controls, /* Graph controls */
+.bases-table, /* Bases tables */
 .popover.hover-popover {
     color:                       var(--viewer-text-normal);
     --icon-color:                var(--readview-icons-color);
@@ -589,9 +593,11 @@ Revert some areas that are overriden by above back to default state
 - Preferences sidebar (vertical-tab-header);
 - Preferences community plugins & themes (modal-sidebar);
 - Highlightr plugin pop-up menu (menu-scroll);
+- Bases "Configure View" pop-up (combobox);
 */
 .vertical-tab-header,
 .menu-scroll,
+.combobox,
 .modal-sidebar {
     background-color:            var(--dark_bg_2);
     color:                       var(--white_text_3);
@@ -647,7 +653,9 @@ Revert some areas that are overriden by above back to default state
 .mod-header .metadata-property-value,
 .mod-header .metadata-input-longtext,
 .cm-editor .metadata-property-value,
-.cm-editor .metadata-input-longtext {
+.cm-editor .metadata-input-longtext,
+.bases-table .metadata-property-value,
+.bases-table .metadata-input-longtext {
     --pill-color: var(--viewer-text-muted);
     --metadata-input-text-color: var(--viewer-text-muted);
 }
@@ -659,12 +667,22 @@ Revert some areas that are overriden by above back to default state
 .cm-editor input[type='datetime-local'] {
     color-scheme: var(--viewer-color-scheme) !important;
 }
+
+.bases-table .mod-datetime {
+    color: var(--viewer-text-normal) !important;
+}
+.bases-table .mod-datetime:hover,
+.bases-table .multi-select-pill:hover {
+    color: var(--viewer-text-normal) !important;
+    background-color: var(--viewer-secondary) !important;
+}
 /* #endregion */
 
 
 /* Tab icons (for active tabs, icon colors have to be manually overriden, because overriding all of them also overrides other icons in the header) */
 .workspace-tab-header.is-active .svg-icon.lucide-layout-dashboard,
 .workspace-tab-header.is-active .svg-icon.lucide-trello,
+.workspace-tab-header.is-active .svg-icon.lucide-table,
 .workspace-tab-header.is-active .svg-icon.lucide-git-fork {
     stroke: var(--viewer-text-normal) !important;
 }
@@ -798,6 +816,90 @@ input.kanban-plugin__filter-input {
 .canvas-group-label[contenteditable="true"] {
     color: var(--viewer-text-normal);
 }
+/* #endregion */
+
+
+/* #region __________ BASES __________ */
+.bases-header {
+    --text-normal: var(--viewer-text-normal);
+}
+.bases-header svg {
+    color: var(--viewer-text-muted);
+}
+
+.bases-td:hover {
+    background-color: var(--viewer-secondary);
+}
+
+/* Header style (similar to regular tables) */
+.bases-thead {
+    border-bottom: 3px solid var(--color-accent) !important;
+    background-color: var(--table-row-even-background);
+}
+.bases-table-header-label,
+.bases-table-header-sort {
+    color: var(--viewer-text-normal) !important;
+}
+.bases-thead .bases-td:hover .bases-table-header-label,
+.bases-thead .bases-td:hover .bases-table-header-sort {
+    color: var(--white_text_1) !important;
+}
+
+/* Disabled cells */
+.bases-table-cell[disabled="true"] {
+    background-color: var(--viewer-secondary) !important;
+}
+
+/* Header buttons */
+.bases-header .text-icon-button {
+    color: var(--viewer-text-muted);
+}
+.bases-header .text-icon-button.has-active-menu,
+.bases-header .text-icon-button:hover,
+.bases-header .text-icon-button:hover:not(.is-active),
+.bases-header .text-icon-button:focus-within:not(.is-active) {
+    background-color: var(--viewer-tetriary) !important;
+}
+.bases-header .is-active {
+    color: var(--color-accent);
+}
+.bases-header .is-active svg {
+    color: var(--color-accent);
+}
+
+/* Form fields, menus, inputs & buttons */
+.bases-toolbar-menu-form .combobox-button,
+.bases-toolbar-menu-form .dropdown,
+.bases-toolbar-menu-form input,
+.bases-toolbar-menu-form input:focus-within,
+.bases-toolbar-menu-form .input-row-content input:hover {
+    background-color: var(--dark_bg_3);
+    color: var(--white_text_2);
+    box-shadow: inset 0 0.5px 0.5px 0.5px rgba(255, 255, 255, 0.09), 0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 1px 1.5px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 0 0 0 transparent !important;
+}
+.bases-toolbar-menu-form .combobox-button:hover,
+.bases-toolbar-menu-form .dropdown:hover {
+    background-color: var(--dark_bg_4) !important;
+    box-shadow: inset 0 0.5px 1px 0.5px rgba(255, 255, 255, 0.16), 0 2px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 1.5px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.4), 0 0 0 0 transparent !important;
+}
+
+.filter-property-select, .filter-operator, .filter-rhs-container,
+.formula-editor-container, .formula-editor .cm-line, .filter-expression,
+.filter-row-actions,
+.bases-sort-property, .bases-sort-direction {
+    background-color: var(--dark_bg_4) !important;
+    color: var(--white_text_2) !important;
+}
+.filter-property-select:hover, .filter-operator:hover, .filter-rhs-container:hover,
+.formula-editor-container:hover, .filter-expression:hover,
+.bases-sort-property:hover, .bases-sort-direction:hover {
+    background-color: var(--dark_bg_6);
+}
+
+.bases-query-container .filter-group .filter-group {
+    background-color: var(--dark_bg_1);
+}
+
 /* #endregion */
 
 
@@ -1541,7 +1643,8 @@ body:not(.nav-file-indicators) .nav-file .nav-file-title[data-path*=".canvas"] .
 /* #region __________ FILE: SPREADSHEET __________ */
 body:not(.nav-file-indicators) .nav-file .nav-file-title:is(
     [data-path*=".xlsx"],
-    [data-path*=".ods"]
+    [data-path*=".ods"],
+    [data-path*=".base"]
 ) .nav-file-title-content::before {
     display: inline-block;
     background-color: var(--green-dim);
