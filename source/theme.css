@@ -926,6 +926,13 @@ input.kanban-plugin__filter-input {
 
 /* #region ____________________ PLUGINS ____________________ */
 
+/* #region __________ DATAVIEW __________ */
+.dataview th {
+    font-size: var(--font-size) !important;
+}
+
+/* #endregion */
+
 /* #region __________ EDITING TOOLBAR __________ */
 .editingToolbarDefaultAesthetic,
 .editingToolbarDefaultAesthetic .subitem {
