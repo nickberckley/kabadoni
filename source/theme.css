@@ -23,6 +23,7 @@
     --black_text_1: #000000; /* Active, highlighted, bold, heading text & elements */
     --black_text_2: #1e1e1e; /* Main reading text */
     --black_text_3: #404040; /* Muted, secondary text */
+    --black_text_4: rgb(83, 83, 83); /* Muted, secondary text */
 
     --blue: #586f86;
     --yellow: #f0c674;
@@ -98,6 +99,7 @@ body {
     /* Reading View Text Colors */
     --viewer-text-normal:            var(--white_text_2);
     --viewer-text-muted:             var(--white_text_3);
+    --viewer-text-dim:               var(--white_text_4);
     --viewer-text-faint:             var(--white_text_6); /* Line numbers */
     --viewer-bold-color:             var(--white_text_1);
     --viewer-italic-color:           var(--white_text_2);
@@ -139,6 +141,7 @@ body {
     /* Reading View Text Colors */
     --viewer-text-normal:            var(--black_text_2);
     --viewer-text-muted:             var(--black_text_3);
+    --viewer-text-dim:               var(--black_text_4);
     --viewer-text-faint:             #939393; /* Line numbers */
     --viewer-bold-color:             var(--black_text_1);
     --viewer-italic-color:           var(--black_text_2);
@@ -265,6 +268,10 @@ body.is-focused .workspace-tabs.mod-top,
 .suggestion-item.is-selected {
     background-color: var(--dark_bg_6);
     color: var(--white_text_2)
+}
+.suggestion-item:focus,
+.suggestion-item:hover {
+    background-color: var(--dark_bg_3);
 }
 
 
@@ -683,6 +690,7 @@ Revert some areas that are overriden by above back to default state
 .workspace-tab-header.is-active .svg-icon.lucide-layout-dashboard,
 .workspace-tab-header.is-active .svg-icon.lucide-trello,
 .workspace-tab-header.is-active .svg-icon.lucide-table,
+.workspace-tab-header.is-active .svg-icon.lucide-layout-grid,
 .workspace-tab-header.is-active .svg-icon.lucide-git-fork {
     stroke: var(--viewer-text-normal) !important;
 }
@@ -898,6 +906,25 @@ input.kanban-plugin__filter-input {
 
 .bases-query-container .filter-group .filter-group {
     background-color: var(--dark_bg_1);
+}
+
+/* UI */
+.bases-toolbar-menu-item.mod-hidden {
+    color: var(--white_text_5) !important;
+}
+
+/* Cards */
+.bases-cards-item {
+    --bases-cards-shadow-hover: 0 0 0 1px var(--color-accent) !important;
+}
+.bases-cards-cover {
+    background-color: var(--viewer-secondary) !important;
+}
+.bases-cards-property {
+    color: var(--viewer-text-normal) !important;
+}
+.bases-cards-label {
+    color: var(--viewer-text-dim) !important;
 }
 
 /* #endregion */
