@@ -280,6 +280,8 @@ input.prompt-input:focus-visible {
     border-bottom: none;
     background-color: var(--viewer-secondary);
 }
+.prompt-results .suggestion-item:focus,
+.prompt-results .suggestion-item:hover,
 .prompt-results .suggestion-item.is-selected {
     background-color: var(--viewer-primary);
     color: var(--viewer-text-normal)
