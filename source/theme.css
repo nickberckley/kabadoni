@@ -973,6 +973,7 @@ input.kanban-plugin__filter-input {
 
 /* #endregion */
 
+
 /* #region __________ EDITING TOOLBAR __________ */
 .editingToolbarDefaultAesthetic,
 .editingToolbarDefaultAesthetic .subitem {
@@ -1015,6 +1016,35 @@ input.kanban-plugin__filter-input {
     background-color: var(--viewer-secondary) !important;
 }
 
+/* #endregion */
+
+
+/* #region __________ GLOBAL SEARCH & REPLACE __________ */
+.snr-input-icon-wrapper,
+.snr-input-button-wrapper {
+    --background-modifier-form-field-hover: var(--viewer-secondary);
+    border: 0;
+}
+.snr-input-icon-wrapper input:focus-visible,
+.snr-input-button-wrapper input:focus-visible {
+    border-bottom: 1px solid var(--dark_bg_3);
+}
+
+.snr-workspace-tab-header-inner svg {
+    stroke: var(--black_text_4) !important;
+}
+.snr-workspace-tab-header-inner-icon-active svg,
+.snr-workspace-tab-header-inner:hover svg {
+    stroke: var(--white_text_2) !important;
+}
+
+.snr-workspace-tab-header-inner-icon-active {
+    background-color: var(--dark_bg_3) !important;
+    stroke: var(--white_text_2) !important;
+}
+.snr-workspace-tab-header-inner-icon-active:hover {
+    background-color: var(--dark_bg_4) !important;
+}
 /* #endregion */
 
 /* #endregion */
