@@ -258,13 +258,18 @@ body.is-focused .workspace-tabs.mod-top,
     background-color: var(--dark_bg_1);
 }
 
-
 /* Suggestions (this window is shared by many pop-ups, including tag suggestions, file property suggestions, font picker, etc.) */
 .suggestion {
     background-color: var(--dark_bg_2) !important;
     color: var(--white_text_2);
     --text-muted: var(--white_text_3);
 }
+.suggestion-container .prompt-instructions {
+    background-color: var(--dark_bg_2) !important;
+    color: var(--white_text_4);
+    border-top: 1px solid var(--dark_bg_3);
+}
+
 .suggestion-item.is-selected {
     background-color: var(--dark_bg_6);
     color: var(--white_text_2)
@@ -273,7 +278,6 @@ body.is-focused .workspace-tabs.mod-top,
 .suggestion-item:hover {
     background-color: var(--dark_bg_3);
 }
-
 
 /* Pop-up search windows (Ctrl-P, Ctrl-O) */
 input.prompt-input:focus-visible {
