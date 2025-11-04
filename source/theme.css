@@ -576,6 +576,13 @@ input[type='datetime-local'],
 .markdown-preview-view.markdown-rendered .markdown-preview-section {
     padding-left: 4%;
 }
+
+/* Tags */
+.cm-hashtag,
+.tag {
+    color: var(--white_text_3) !important;
+    background-color: color-mix(in srgb, var(--tag-background) 95%, transparent) !important;
+}
 /* #endregion */
 
 
