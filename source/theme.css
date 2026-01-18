@@ -898,6 +898,12 @@ input.kanban-plugin__filter-input {
     background-color: var(--viewer-secondary) !important;
 }
 
+/* Bases list view */
+.bases-rendered-value,
+.bases-rendered-value input {
+    color: var(--viewer-text-normal) !important;
+}
+
 /* Header buttons */
 .bases-header .text-icon-button {
     color: var(--viewer-text-muted);
