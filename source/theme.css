@@ -82,6 +82,9 @@ body {
     --graph-line:                    var(--viewer-text-faint);
     --graph-text:                    var(--viewer-text-normal);
     --graph-node:                    var(--viewer-text-muted);
+
+    /* Bases */
+    --bases-table-group-background:  var(--viewer-primary);
     /* #endregion */
 }
 
@@ -882,6 +885,14 @@ input.kanban-plugin__filter-input {
     color: var(--white_text_1) !important;
 }
 
+/* Group headings */
+.bases-group-heading {
+    color: var(--viewer-text-normal)
+}
+.bases-group-property {
+    color: var(--viewer-text-muted) !important;
+}
+
 /* Disabled cells */
 .bases-table-cell[disabled="true"] {
     background-color: var(--viewer-secondary) !important;
@@ -937,9 +948,12 @@ input.kanban-plugin__filter-input {
     background-color: var(--dark_bg_1);
 }
 
-/* UI */
+/* Bases UI */
 .bases-toolbar-menu-item.mod-hidden {
     color: var(--white_text_5) !important;
+}
+.bases-td:focus-visible {
+    background-color: var(--test);
 }
 
 /* Cards */
