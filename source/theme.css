@@ -892,10 +892,6 @@ input.kanban-plugin__filter-input {
     color: var(--viewer-text-muted);
 }
 
-.bases-td:hover {
-    background-color: var(--viewer-secondary);
-}
-
 /* Header style (similar to regular tables) */
 .bases-thead {
     border-bottom: 3px solid var(--color-accent) !important;
@@ -919,15 +915,28 @@ input.kanban-plugin__filter-input {
 }
 
 /* Cells */
+.bases-td:hover {
+    background-color: var(--viewer-secondary);
+}
+.bases-table-cell:focus-within,
+.bases-td input:focus {
+    background-color: var(--viewer-secondary) !important;
+}
+.bases-table-cell input[type='date'],
+.bases-table-cell input[type='datetime-local'] {
+    color-scheme: light !important;
+}
+
+.bases-table-cell[disabled="true"] {
+    background-color: var(--viewer-secondary) !important;
+}
+
 .bases-table .mod-datetime {
     color: var(--viewer-text-normal) !important;
 }
 .bases-table .mod-datetime:hover,
 .bases-table .multi-select-pill:hover {
     color: var(--viewer-text-normal) !important;
-    background-color: var(--viewer-secondary) !important;
-}
-.bases-table-cell[disabled="true"] {
     background-color: var(--viewer-secondary) !important;
 }
 
@@ -1010,9 +1019,6 @@ input.kanban-plugin__filter-input {
 /* Bases UI */
 .bases-toolbar-menu-item.mod-hidden {
     color: var(--white_text_5) !important;
-}
-.bases-td:focus-visible {
-    background-color: var(--test);
 }
 
 /* Cards */
