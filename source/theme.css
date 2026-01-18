@@ -733,6 +733,7 @@ Revert some areas that are overriden by above back to default state
 .workspace-tab-header.is-active .svg-icon.lucide-list,
 .workspace-tab-header.is-active .svg-icon.lucide-map,
 .workspace-tab-header.is-active .svg-icon.lucide-layout-grid,
+.workspace-tab-header.is-active .svg-icon.lucide-book-up,
 .workspace-tab-header.is-active .svg-icon.lucide-git-fork {
     stroke: var(--viewer-text-normal) !important;
 }
