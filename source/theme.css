@@ -607,7 +607,7 @@ input[type='datetime-local'],
 .graph-controls, /* Graph controls */
 .bases-table, /* Bases tables */
 .popover.hover-popover {
-    color:                       var(--viewer-text-normal);
+    color:                       var(--viewer-text-normal) !important;
     --icon-color:                var(--readview-icons-color);
     --text-normal:               var(--viewer-text-normal);
     --text-faint:                var(--viewer-text-faint);
@@ -826,6 +826,12 @@ input.kanban-plugin__filter-input {
 }
 
 /* Canvas cards (empty) */
+.canvas-empty-embed-container, .canvas-empty-embed-container button {
+    color: var(--viewer-text-muted);
+}
+.canvas-empty-embed-container .mod-warning {
+    color: var(--black_text_1) !important;
+}
 .file-embed.mod-generic,
 .file-embed.mod-generic:hover,
 .file-embed.mod-empty {
