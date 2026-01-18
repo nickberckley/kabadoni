@@ -84,7 +84,7 @@ body {
     --graph-node:                    var(--viewer-text-muted);
 
     /* Bases */
-    --bases-table-group-background:  var(--viewer-primary);
+    --bases-table-group-background:  var(--viewer-bases-table-group);
 
     /* Settings */
     --setting-items-background:      var(--viewer-secondary);
@@ -131,6 +131,9 @@ body {
     --viewer-callout-multiplier-s:   2.4;
     --viewer-callout-multiplier-l:   2.5;
     --viewer-callout-box-shadow:     var(--background-primary);
+
+    /* Bases */
+    --viewer-bases-table-group:      var(--viewer-secondary);
 }
 
 
@@ -173,6 +176,9 @@ body {
     --viewer-callout-multiplier-s:   1;
     --viewer-callout-multiplier-l:   1;
     --viewer-callout-box-shadow:     var(--viewer-primary);
+
+    /* Bases */
+    --viewer-bases-table-group:      var(--viewer-primary);
 }
 
 
@@ -966,6 +972,12 @@ input.kanban-plugin__filter-input {
 
 .maplibregl-ctrl-bottom-right a {
     color: var(--viewer-text-normal);
+}
+
+/* Bases summary */
+.bases-table-summary-cell:hover {
+    background-color: var(--viewer-bases-table-group);
+    color: var(--viewer-text-faint);
 }
 
 /* Header buttons */
