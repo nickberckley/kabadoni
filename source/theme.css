@@ -454,7 +454,7 @@ input[type='datetime-local'],
 
 /* Multi-Select container */
 .multi-select-container {
-    background-color: var(--dark_bg_3) !important;
+    background-color: var(--dark_bg_2) !important;
     border: 0;
 }
 .multi-select-pill {
@@ -668,7 +668,6 @@ Revert some areas that are overriden by above back to default state
     color: var(--viewer-text-muted) !important;
 }
 
-
 /* Search widget */
 .vertical-tabs-container .search-input-container input {
     background-color: var(--viewer-primary);
@@ -715,13 +714,22 @@ Revert some areas that are overriden by above back to default state
     color-scheme: var(--viewer-color-scheme) !important;
 }
 
-.bases-table .mod-datetime {
-    color: var(--viewer-text-normal) !important;
+/* List items */
+.bases-table .metadata-property-value .multi-select-container,
+.cm-editor .metadata-property-value .multi-select-container {
+    background-color: var(--background-primary) !important;
+    border: 0;
 }
-.bases-table .mod-datetime:hover,
-.bases-table .multi-select-pill:hover {
-    color: var(--viewer-text-normal) !important;
+.bases-table .metadata-property-value .multi-select-pill,
+.cm-editor .metadata-property-value .multi-select-pill {
+    border-radius: 5%;
     background-color: var(--viewer-secondary) !important;
+    border: var(--pill-border-width) solid var(--dark_bg_1);
+}
+.bases-table .metadata-property-value .multi-select-pill:hover,
+.cm-editor .metadata-property-value .multi-select-pill:hover {
+    color: var(--viewer-text-normal);
+    border: var(--pill-border-width) solid var(--dark_bg_6);
 }
 /* #endregion */
 
@@ -910,7 +918,15 @@ input.kanban-plugin__filter-input {
     color: var(--viewer-text-muted) !important;
 }
 
-/* Disabled cells */
+/* Cells */
+.bases-table .mod-datetime {
+    color: var(--viewer-text-normal) !important;
+}
+.bases-table .mod-datetime:hover,
+.bases-table .multi-select-pill:hover {
+    color: var(--viewer-text-normal) !important;
+    background-color: var(--viewer-secondary) !important;
+}
 .bases-table-cell[disabled="true"] {
     background-color: var(--viewer-secondary) !important;
 }
@@ -953,6 +969,9 @@ input.kanban-plugin__filter-input {
 }
 .bases-header .is-active svg {
     color: var(--color-accent);
+}
+.bases-toolbar-menu-container .multi-select-container {
+    background-color: var(--dark_bg_3) !important;
 }
 
 /* Form fields, menus, inputs & buttons */
