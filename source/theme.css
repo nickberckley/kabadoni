@@ -85,6 +85,9 @@ body {
 
     /* Bases */
     --bases-table-group-background:  var(--viewer-primary);
+
+    /* Settings */
+    --setting-items-background:      var(--viewer-secondary);
     /* #endregion */
 }
 
@@ -472,6 +475,12 @@ input[type='datetime-local'],
 }
 .calendar .week-num:hover, .calendar .day:hover{
     background-color: var(--dark_bg_6) !important;
+}
+
+
+/* Settings */
+.setting-item-name {
+    color: var(--viewer-text-normal) !important;
 }
 
 
@@ -924,7 +933,7 @@ input.kanban-plugin__filter-input {
 }
 .bases-table-cell input[type='date'],
 .bases-table-cell input[type='datetime-local'] {
-    color-scheme: light !important;
+    color-scheme: var(--viewer-color-scheme) !important;
 }
 
 .bases-table-cell[disabled="true"] {
@@ -947,10 +956,6 @@ input.kanban-plugin__filter-input {
 }
 
 /* Bases map view */
-.setting-item-name {
-    color: var(--black_text_1) !important;
-}
-
 .bases-map-popup-property-label {
     color: var(--viewer-text-dim) !important;
 }
