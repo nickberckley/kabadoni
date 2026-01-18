@@ -452,6 +452,20 @@ input[type='datetime-local'],
 }
 
 
+/* Multi-Select container */
+.multi-select-container {
+    background-color: var(--dark_bg_3) !important;
+    border: 0;
+}
+.multi-select-pill {
+    background-color: var(--dark_bg_2) !important;
+    border: var(--pill-border-width) solid var(--dark_bg_1);
+}
+.multi-select-pill:hover {
+    border: var(--pill-border-width) solid var(--dark_bg_6);
+}
+
+
 /* Calendar */
 .calendar .week-num {
     color: var(--white_text_5) !important;
@@ -716,6 +730,8 @@ Revert some areas that are overriden by above back to default state
 .workspace-tab-header.is-active .svg-icon.lucide-layout-dashboard,
 .workspace-tab-header.is-active .svg-icon.lucide-trello,
 .workspace-tab-header.is-active .svg-icon.lucide-table,
+.workspace-tab-header.is-active .svg-icon.lucide-list,
+.workspace-tab-header.is-active .svg-icon.lucide-map,
 .workspace-tab-header.is-active .svg-icon.lucide-layout-grid,
 .workspace-tab-header.is-active .svg-icon.lucide-git-fork {
     stroke: var(--viewer-text-normal) !important;
@@ -902,6 +918,23 @@ input.kanban-plugin__filter-input {
 .bases-rendered-value,
 .bases-rendered-value input {
     color: var(--viewer-text-normal) !important;
+}
+
+/* Bases map view */
+.setting-item-name {
+    color: var(--black_text_1) !important;
+}
+
+.bases-map-popup-property-label {
+    color: var(--viewer-text-dim) !important;
+}
+.bases-map-popup-title a,
+.bases-map-popup-property-value {
+    color: var(--viewer-text-normal) !important;
+}
+
+.maplibregl-ctrl-bottom-right a {
+    color: var(--viewer-text-normal);
 }
 
 /* Header buttons */
