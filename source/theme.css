@@ -279,6 +279,11 @@ body.is-focused .workspace-tabs.mod-top,
     background-color: var(--dark_bg_3);
 }
 
+/* Autocomplete (for properties in base formulas) */
+.cm-tooltip-autocomplete {
+    background-color: var(--dark_bg_2) !important;
+}
+
 /* Pop-up search windows (Ctrl-P, Ctrl-O) */
 input.prompt-input:focus-visible {
     border-bottom: none;
@@ -414,6 +419,11 @@ input[type='datetime-local'],
     color-scheme: dark !important;
 }
 
+
+/* Placeholders */
+.cm-placeholder {
+    color: var(--white_text_5) !important;
+}
 
 /* Keymaps */
 .suggestion-hotkey,
@@ -905,14 +915,14 @@ input.kanban-plugin__filter-input {
 }
 
 .filter-property-select, .filter-operator, .filter-rhs-container,
-.formula-editor-container, .formula-editor .cm-line, .filter-expression,
-.filter-row-actions,
+.formula-editor .cm-line, .formula-editor .cm-scroller,
+.filter-expression, .filter-row-actions,
 .bases-sort-property, .bases-sort-direction {
     background-color: var(--dark_bg_4) !important;
     color: var(--white_text_2) !important;
 }
 .filter-property-select:hover, .filter-operator:hover, .filter-rhs-container:hover,
-.formula-editor-container:hover, .filter-expression:hover,
+.filter-expression:hover,
 .bases-sort-property:hover, .bases-sort-direction:hover {
     background-color: var(--dark_bg_6);
 }
