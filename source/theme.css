@@ -954,6 +954,9 @@ input.kanban-plugin__filter-input {
 
 
 /* #region __________ GRAPH __________ */
+.graph-controls {
+    background-color: var(--viewer-primary);
+}
 .graph-controls-button {
     background-color: var(--viewer-secondary);
 }
